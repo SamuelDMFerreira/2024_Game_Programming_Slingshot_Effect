@@ -154,4 +154,6 @@ $RECYCLE.BIN/
 # ignore test scripts
 /Assets/Scripts/test*.cs
 
+# ignore visual studio
+.vsconfig
 # End of https://www.toptal.com/developers/gitignore/api/osx,linux,unity,windows
