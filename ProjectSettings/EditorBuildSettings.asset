@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: a3e1565678890e46280579bdd43fd912
+  - enabled: 1
+    path: Assets/Scenes/Slingshot.unity
+    guid: bb1d5c914e7cbc64ba748a4516b6d5f5
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 5ec725b522ca3b3f294f981e1a050079
   m_configObjects: {}
