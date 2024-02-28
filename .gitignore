@@ -71,6 +71,7 @@ Temporary Items
 /[Aa]ssets/Plugins/Editor/JetBrains*
 
 # Visual Studio cache directory
+.vscode/
 .vs/
 
 # Gradle cache directory
