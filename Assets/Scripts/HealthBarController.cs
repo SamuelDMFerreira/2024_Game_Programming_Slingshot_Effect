@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Gives methods for setting healthbar to a certain percentage.
+/// Control Healthbar prefab
 /// </summary>
 public class HealthBarController : MonoBehaviour
 {
