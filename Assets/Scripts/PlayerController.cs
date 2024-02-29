@@ -27,10 +27,6 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        /*if (Input.GetKey(KeyCode.W))
-        {
-            rb.AddForce(transform.forward * moveSpeed);
-        }*/
 
         // Update the boost timer and handle boost duration
         if (isBoosting)
@@ -63,6 +59,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * boostMaxSpeed;
         }
+    }
+
+    // applies smaller thrust, which won't have a cooldown
+    public void ApplySmallThrust()
+    {
+        rb.AddForce(transform.forward * moveSpeed);
     }
 
     // Input: Expected a number from -1.0 to 1.0 matching with player input

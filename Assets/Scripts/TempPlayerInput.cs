@@ -22,6 +22,10 @@ public class TempPlayerInput : MonoBehaviour
             {
                 controller.ApplyEscapeThrust();
             }
+            if (Input.GetKey(KeyCode.W))
+            {
+                controller.ApplySmallThrust();
+            }   
             // get player turn 
             float rotation = Input.GetAxis("Horizontal");
             controller.HandleInputRotation(rotation);
