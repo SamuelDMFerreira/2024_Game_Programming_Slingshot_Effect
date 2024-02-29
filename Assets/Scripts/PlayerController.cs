@@ -24,21 +24,13 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canBoost)
-        {
-            ApplyEscapeThrust();
-        }
     }
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
+        /*if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * moveSpeed);
-        }
-
-        HandleInputRotation();
-
-   
+        }*/
 
         // Update the boost timer and handle boost duration
         if (isBoosting)
@@ -73,13 +65,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void HandleInputRotation()
+    // Input: Expected a number from -1.0 to 1.0 matching with player input
+    public void HandleInputRotation(float rotation)
     {
-        float rotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+        rotation *= rotationSpeed * Time.deltaTime;
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0, rotation, 0));
     }
 
-    void ApplyEscapeThrust()
+    public void ApplyEscapeThrust()
     {
         if (canBoost)
         {
