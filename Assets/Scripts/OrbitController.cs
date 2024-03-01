@@ -5,9 +5,9 @@ using UnityEngine;
 public class OrbitController : MonoBehaviour
 {
     public float gravityPull = 9.8f; // Simulated gravitational pull strength
-    public float orbitRadius = 10f; // The radius at which objects will be pulled into orbit
-    public float minDistance = 2f; // Minimum allowed distance between the two objects to prevent them from touching
-    public float orbitalSpeed = 5f; // Desired constant speed for objects in orbit
+    public float orbitRadius = 50f; // The radius at which objects will be pulled into orbit
+    public float minDistance = 50f; // Minimum allowed distance between the two objects to prevent them from touching
+    public float orbitalSpeed = 50f; // Desired constant speed for objects in orbit
 
     void OnTriggerStay(Collider other)
     {
