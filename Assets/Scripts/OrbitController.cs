@@ -43,7 +43,10 @@ public class OrbitController : MonoBehaviour
                     otherRb.velocity = tangentialDirection * orbitalSpeed; 
                 }
             }*/
-            otherRb.AddForce(directionToCenter.normalized * gravityPull);
+            else
+            {
+                otherRb.AddForce(directionToCenter.normalized * gravityPull);
+            }
         }
     }
 }
