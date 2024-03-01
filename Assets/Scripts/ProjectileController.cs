@@ -22,6 +22,8 @@ public class ProjectileController : MonoBehaviour
         if (rb != null)
         {
             rb.AddForce(transform.forward * launchForce);
+            rb.velocity += this.GetComponent<Rigidbody>().velocity;
+            //this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
 
         // Destroy the projectile after 'lifetime' seconds
