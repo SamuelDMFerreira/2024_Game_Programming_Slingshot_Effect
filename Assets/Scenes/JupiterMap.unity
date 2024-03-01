@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityPull: 4
-  orbitRadius: 1000
+  orbitRadius: 1500
 --- !u!1 &559830012
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +640,10 @@ PrefabInstance:
     - target: {fileID: 2064466281772792004, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
       propertyPath: m_AngularDrag
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064466281772792004, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
+      propertyPath: m_Constraints
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2927671929899637415, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
       propertyPath: m_LocalPosition.x
