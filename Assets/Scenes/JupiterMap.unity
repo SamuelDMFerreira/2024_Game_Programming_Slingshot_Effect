@@ -879,7 +879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6087338145102690893, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
       propertyPath: launchForce
-      value: 2800
+      value: 2400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
