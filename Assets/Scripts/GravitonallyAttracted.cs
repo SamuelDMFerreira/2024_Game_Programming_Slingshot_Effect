@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GravitonallyAttracted : MonoBehaviour
 {
-    private bool attracted;
+    private bool attracted = true;
     public bool Attracted 
     { 
         get => attracted; 

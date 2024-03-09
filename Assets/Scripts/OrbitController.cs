@@ -18,7 +18,7 @@ public class OrbitController : MonoBehaviour
     {
         Rigidbody otherRb = other.GetComponent<Rigidbody>();
         GravitonallyAttracted ga = other.GetComponent<GravitonallyAttracted>();
-        if (otherRb != null && ga != null)
+        if (otherRb != null && ga != null && ga.Attracted == true)
         {          
             Vector3 directionToCenter = transform.position - other.transform.position;
             float distance = directionToCenter.magnitude;
