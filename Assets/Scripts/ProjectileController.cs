@@ -20,19 +20,22 @@ public class ProjectileController : MonoBehaviour
     // enable gravitional effects for a projectile with attracted. 
     IEnumerator turnOn(GravitonallyAttracted ga)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         ga.Attracted = true;
     }
 
     void LaunchProjectile()
     {
+        Vector3 launchPosition = transform.position + (transform.forward * 2.0f);
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         GravitonallyAttracted ga = projectile.GetComponent<GravitonallyAttracted>();
         if (rb != null && ga != null)
         {
+            // temporary disable projection gravitional attraction and set it to have same initial velocity as ship
             ga.Attracted = false;
+            //rb.velocity = this.gameObject.GetComponent<Rigidbody>().velocity;
             rb.AddForce(transform.forward * launchForce);
             StartCoroutine(turnOn(ga));
         }
