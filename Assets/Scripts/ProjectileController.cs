@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ProjectileController : MonoBehaviour
 {
@@ -16,16 +17,27 @@ public class ProjectileController : MonoBehaviour
         Debug.DrawRay(transform.position, forward, Color.green);
     }
 
+    // enable gravitional effects for a projectile with attracted. 
+    IEnumerator turnOn(GravitonallyAttracted ga)
+    {
+        yield return new WaitForSeconds(0.5f);
+        ga.Attracted = true;
+    }
+
     void LaunchProjectile()
     {
+        Vector3 launchPosition = transform.position + (transform.forward * 2.0f);
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        if (rb != null)
+        GravitonallyAttracted ga = projectile.GetComponent<GravitonallyAttracted>();
+        if (rb != null && ga != null)
         {
+            // temporary disable projection gravitional attraction and set it to have same initial velocity as ship
+            ga.Attracted = false;
+            //rb.velocity = this.gameObject.GetComponent<Rigidbody>().velocity;
             rb.AddForce(transform.forward * launchForce);
-            //rb.velocity += this.GetComponent<Rigidbody>().velocity;
-            //this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            StartCoroutine(turnOn(ga));
         }
 
         // Destroy the projectile after 'lifetime' seconds

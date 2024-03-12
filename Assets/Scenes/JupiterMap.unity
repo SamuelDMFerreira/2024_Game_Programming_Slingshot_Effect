@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 1192821791}
   - component: {fileID: 1192821792}
   - component: {fileID: 1192821793}
+  - component: {fileID: 1192821794}
   m_Layer: 0
   m_Name: Io
   m_TagString: Untagged
@@ -742,6 +743,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: -30, y: 0, z: 0}
+--- !u!114 &1192821794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192821786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409520ec0bc105a42bc957aab626d484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1284068367
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064466281772792004, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
       propertyPath: m_Constraints
-      value: 100
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 2927671929899637415, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -848,8 +861,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6087338145102690893, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087338145102690893, guid: ae040e8334e27ec4b815e4bb0f722b93, type: 3}
       propertyPath: launchForce
-      value: 2800
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
