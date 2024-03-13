@@ -12,7 +12,6 @@ public class HealthBarController : MonoBehaviour
     private float maxWidth = 0.0f;
     // The edge the health bar is anchored at (Right or Left)
     [SerializeField] private RectTransform.Edge anchoredEdge;
-    public float testFill;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +29,17 @@ public class HealthBarController : MonoBehaviour
             throw new System.Exception("Healthbar must be anchored on left or right.");
 
         SetBarFill(1f);
+
+        // Subscribe to health change event
+        GameManager.OnHealthChange += HandleHealthChange;
+    }
+
+    /// <summary>
+    /// Unsubscribe from health change event
+    /// </summary>
+    void OnDestroy()
+    {
+        GameManager.OnHealthChange -= HandleHealthChange;
     }
 
     /// <summary>
@@ -49,5 +59,17 @@ public class HealthBarController : MonoBehaviour
     private void SetBarWidth(float width)
     {
         innerRect.SetInsetAndSizeFromParentEdge(anchoredEdge, 0f, width);
+    }
+
+    /// <summary>
+    /// Handle health change event
+    /// </summary>
+    /// <param name="currentHealth">Current health</param>
+    /// <param name="maxHealth">Maximum health</param>
+    private void HandleHealthChange(float currentHealth, float maxHealth)
+    {
+        var fillRatio = currentHealth / maxHealth;
+
+        SetBarFill(fillRatio);
     }
 }

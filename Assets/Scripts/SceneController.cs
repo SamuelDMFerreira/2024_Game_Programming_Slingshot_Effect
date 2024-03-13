@@ -9,10 +9,12 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("Start");
     }
+
     public void LoadMainScene()
     {
         SceneManager.LoadScene("Slingshot");
     }
+
     public void LoadEndScene()
     {
         SceneManager.LoadScene("GameOver");
