@@ -49,12 +49,11 @@ public class PlayerInputListener : MonoBehaviour
 
     public void OnTurn(InputValue inputVal)
     {
-        Debug.Log("Turning!");
         turnFactor = inputVal.Get<float>();
     }
 
     public void OnFire()
     {
-        Debug.Log("FIRE!");
+        bulletCtrl.LaunchProjectile();
     }
 }
