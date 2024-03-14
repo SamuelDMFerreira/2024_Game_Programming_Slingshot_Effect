@@ -13,6 +13,12 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("Slingshot");
     }
+
+    public void LoadSampleScene()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
     public void LoadEndScene()
     {
         SceneManager.LoadScene("GameOver");
