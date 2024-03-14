@@ -9,10 +9,6 @@ public class ProjectileController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            LaunchProjectile();
-        }
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
         Debug.DrawRay(transform.position, forward, Color.green);
     }
@@ -24,7 +20,7 @@ public class ProjectileController : MonoBehaviour
         ga.Attracted = true;
     }
 
-    void LaunchProjectile()
+    public void LaunchProjectile()
     {
         Vector3 launchPosition = transform.position + (transform.forward * 2.0f);
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
