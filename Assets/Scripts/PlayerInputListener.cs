@@ -13,8 +13,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(ProjectileController))]
 public class PlayerInputListener : MonoBehaviour
 {
-    [SerializeField] PlayerController playerCtrl;
-    [SerializeField] ProjectileController bulletCtrl;
+    private PlayerController playerCtrl;
+    private ProjectileController bulletCtrl;
 
     // Controls
     private bool isThrusting = false;
@@ -39,21 +39,25 @@ public class PlayerInputListener : MonoBehaviour
 
     public void OnThrust(InputValue inputVal)
     {
+        Debug.Log("Thrusting");
         isThrusting = inputVal.isPressed;
     }
 
     public void OnBoost(InputValue inputVal)
     {
+        Debug.Log("Boosting");
         isBoosting = inputVal.isPressed;
     }
 
     public void OnTurn(InputValue inputVal)
     {
+        Debug.Log("Turning");
         turnFactor = inputVal.Get<float>();
     }
 
     public void OnFire()
     {
+        Debug.Log("Firing");
         bulletCtrl.LaunchProjectile();
     }
 }
