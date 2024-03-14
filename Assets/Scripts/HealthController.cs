@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    private float currentHealth;
+    public float maxHealth;
+    public float currentHealth;
 
     public float CurrentHealth { get => currentHealth; }
 
@@ -15,7 +15,10 @@ public class HealthController : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// If the player takes damage, update the health
+    /// </summary>
+    /// <param name="dmg"> Dmg taken </param>
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
@@ -23,13 +26,14 @@ public class HealthController : MonoBehaviour
         GameManager.instance.UpdateHealth(currentHealth, maxHealth);
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        // For testing purposes
-        if (Input.GetKeyDown(KeyCode.V))
+        // If the player is hit by a projectile, take damage
+        if (other.gameObject.name == "Projectile")
         {
-            TakeDamage(10);
-            Debug.Log("Current Health: " + currentHealth);
+            var damage = other.gameObject.GetComponent<ProjectileController>().damage;
+
+            TakeDamage(damage);
         }
     }
 }
