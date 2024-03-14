@@ -6,6 +6,9 @@ public class ProjectileController : MonoBehaviour
     public GameObject projectilePrefab;
     public float launchForce = 700f;
     public float lifetime = 5f; // Lifetime of the projectile in seconds
+    public float damage = 10f;
+
+    public float Damage { get => damage; }
 
     void Update()
     {
