@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class CameraController : MonoBehaviour
 {
@@ -15,51 +16,35 @@ public class CameraController : MonoBehaviour
     {
         ResetCameraPosition();
     }
-
+    /// <summary>
+    /// Updates the camera position and rotation based on player input and automatic return behavior.
+    /// </summary>
     void LateUpdate()
     {
-        // Check if the left mouse button is held down
-        if (Input.GetMouseButton(0) && Input.GetMouseButton(1))
+        // Update the return timer and check if the camera should start returning to default position
+        if (!isReturning)
         {
-            yaw += rotationSensitivity * Input.GetAxis("Mouse X");
-            pitch -= rotationSensitivity * Input.GetAxis("Mouse Y");
-
-            // Clamp the pitch rotation to prevent flipping
-            pitch = Mathf.Clamp(pitch, -89f, 89f);
-
-            returnTimer = 0.0f; // Reset the timer
-            isReturning = false; // User is actively controlling the camera
-        }
-        else
-        {
-            // Start the return timer if the mouse button is not being held down
             returnTimer += Time.deltaTime;
-
             if (returnTimer >= returnDelay)
             {
                 isReturning = true;
             }
         }
 
+        // Handle the camera's automatic return to its default orientation
         if (isReturning)
         {
-            // Smoothly interpolate the yaw and pitch rotations back to align with the player's forward direction
             ResetCameraRotation();
         }
 
-        // Update the camera's rotation
+        // Always update the camera's rotation and position based on the current yaw and pitch
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-
-        // Update the camera's position based on the player's position and the initial offset
         transform.position = player.position + Quaternion.Euler(0, yaw, 0) * offset;
 
-        // Check for a key press to reset the camera position manually, e.g., pressing 'R'
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetCameraPosition();
-        }
     }
-
+    /// <summary>
+    /// Resets the camera to its initial position offset from the player.
+    /// </summary>
     void ResetCameraPosition()
     {
         offset = transform.position - player.position; // Recalculate the initial offset
@@ -67,7 +52,9 @@ public class CameraController : MonoBehaviour
         yaw = player.eulerAngles.y; // Align the camera's yaw with the player's orientation
         pitch = 0.0f; // Reset the pitch
     }
-
+    /// <summary>
+    /// Gradually resets the camera rotation to align with the player's forward direction.
+    /// </summary>
     void ResetCameraRotation()
     {
         // Smoothly interpolate the yaw rotation back to align with the player's forward direction
@@ -76,5 +63,20 @@ public class CameraController : MonoBehaviour
         Quaternion smoothRotation = Quaternion.Lerp(currentRotation, targetRotation, Time.deltaTime * rotationSensitivity);
         yaw = smoothRotation.eulerAngles.y;
         pitch = Mathf.Lerp(pitch, 0, Time.deltaTime * rotationSensitivity); // Optionally reset pitch as well
+    }
+
+    /// <summary>
+    /// Updates the camera's yaw and pitch based on the given position difference.
+    /// </summary>
+    /// <param name="positionDifference">The difference in position to use for updating the camera's orientation.</param>
+    public void UpdateCameraPos(Vector2 positionDifference)
+    {
+        yaw += rotationSensitivity * positionDifference.x;
+        pitch -= rotationSensitivity * positionDifference.y;
+        pitch = Mathf.Clamp(pitch, -89f, 89f); // Clamp the pitch rotation to prevent flipping
+
+        // Reset the return timer and flag as soon as there's input, indicating the user is controlling the camera
+        returnTimer = 0.0f;
+        isReturning = false;
     }
 }

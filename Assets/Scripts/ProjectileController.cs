@@ -23,10 +23,12 @@ public class ProjectileController : MonoBehaviour
         ga.Attracted = true;
     }
 
+
     public void LaunchProjectile()
     {
         Vector3 launchPosition = transform.position + (transform.forward * 2.0f);
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySoundEffect("projectile");
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         GravitonallyAttracted ga = projectile.GetComponent<GravitonallyAttracted>();
