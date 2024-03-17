@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7005921938240614791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4310968933747746689}
+  - component: {fileID: 3209678690747478876}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4310968933747746689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005921938240614791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.150061, y: 9.100974, z: 43.692596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3209678690747478876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005921938240614791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63b83dc793155749a87ed4a2da83c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMixerGroup: {fileID: -8133704995458767220, guid: 222fa3d27f3e7fb4d8eed782d1179667, type: 2}
+  sfxMixerGroup: {fileID: 5785600798800021881, guid: 222fa3d27f3e7fb4d8eed782d1179667, type: 2}
+  musicTracks:
+  - clip: {fileID: 8300000, guid: 45cb81d521bfbf3458b5ea731c7ae192, type: 3}
+    audioSource: {fileID: 0}
+    title: TitleTheme
+    volume: 1
+    pitch: 1
+    loop: 1
+  - clip: {fileID: 8300000, guid: 07fa10887faf8a74da3b02c368e3da1e, type: 3}
+    audioSource: {fileID: 0}
+    title: ComputerRoom
+    volume: 1
+    pitch: 1
+    loop: 1
+  sfxClips:
+  - clip: {fileID: 8300000, guid: 443964b954f0e05468bc7b0b54fa175b, type: 3}
+    audioSource: {fileID: 0}
+    title: boost
+    volume: 0.462
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: abdf03010387c1c4093fd31b78bae59c, type: 3}
+    audioSource: {fileID: 0}
+    title: projectile
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 9143285c3bb64fa40baae568bbc42b1c, type: 3}
+    audioSource: {fileID: 0}
+    title: playerHit
+    volume: 1
+    pitch: 1
+    loop: 0
