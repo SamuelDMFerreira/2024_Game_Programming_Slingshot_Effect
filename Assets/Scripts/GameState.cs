@@ -8,8 +8,6 @@ using UnityEngine;
 public enum GameState
 {
     Menu,
-    Online,
-    Local,
     Play,
     GameOver
 }

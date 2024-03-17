@@ -5,17 +5,21 @@ using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     private SceneController controller;
+
+    private GameObject player1;
+    private GameObject player2;
 
     public static GameManager instance { get; private set; }
 
     public GameState currentState { get; private set; }
 
     // To notify subscribers of the state change
-    public static event Action<GameState> OnStateChange; 
+    public static event Action<GameState> OnStateChange;
 
     // To notify subscribers of the health change
     // Health bar controller will subscribe to this event to update the health bar
@@ -62,17 +66,13 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Loading Menu Scene");
                 controller.LoadStartScene();
                 break;
-            case GameState.Online:
-                Debug.Log("Initialize online settings");
-                instance.UpdateState(GameState.Play);
-                break;
-            case GameState.Local:
-                Debug.Log("Initialize local settings");
-                instance.UpdateState(GameState.Play);
-                break;
             case GameState.Play:
                 Debug.Log("Loading Main Scene");
                 controller.LoadMainScene();
+
+                PlayerInputManager.instance.JoinPlayer(0);
+                PlayerInputManager.instance.JoinPlayer(1);
+
                 break;
             case GameState.GameOver:
                 Debug.Log("Loading Game Over Scene");
@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="currentHealth"> The current health of the player </param>
     /// <param name="maxHealth"> The maximum health of the player </param>
+    /// <param name="player"> The player object </param>
     public void UpdateHealth(float currentHealth, float maxHealth)
     {
         // Invoke the event to notify subscribers of the health change

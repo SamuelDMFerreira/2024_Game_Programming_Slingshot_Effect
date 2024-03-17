@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth;
-    public float currentHealth;
+    private float currentHealth;
 
     public float CurrentHealth { get => currentHealth; }
 
@@ -35,5 +35,10 @@ public class PlayerHealth : MonoBehaviour
 
             TakeDamage(damage);
         }
+    }
+
+    public bool NoHealth()
+    {
+        return currentHealth <= 0;
     }
 }

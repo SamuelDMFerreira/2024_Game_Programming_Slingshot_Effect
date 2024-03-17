@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadMainScene()
     {
-        SceneManager.LoadScene("Slingshot");
+        SceneManager.LoadScene("JupiterMap");
     }
 
     public void LoadEndScene()

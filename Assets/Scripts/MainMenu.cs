@@ -5,14 +5,10 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void ToggleOnline()
+    public void PlayGame()
     {
-        GameManager.instance.UpdateState(GameState.Online);
-    }
-
-    public void ToggleLocal()
-    {
-        GameManager.instance.UpdateState(GameState.Local);
+        Debug.Log("Starting Game...");
+        GameManager.instance.UpdateState(GameState.Play);
     }
 
     public void Quit()
