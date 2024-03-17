@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     private Vector3 offset; // Initial offset from the player
     private float yaw = 0.0f; // Yaw rotation around the Y axis
     private float pitch = 0.0f; // Pitch rotation around the X axis
-    private float returnDelay = 1.0f; // Delay before the camera starts moving back
+    private float returnDelay = 0.1f; // Delay before the camera starts moving back
     private float returnTimer = 0.0f; // Timer to track the delay
     private bool isReturning = false; // Flag to check if camera is returning to default position
 

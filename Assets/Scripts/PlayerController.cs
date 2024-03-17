@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f;
@@ -25,8 +26,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-  
+
     }
+
     void FixedUpdate()
     {
 
@@ -88,5 +90,4 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Escape thrust applied!");
         }
     }
-
 }

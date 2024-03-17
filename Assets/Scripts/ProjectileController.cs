@@ -6,13 +6,12 @@ public class ProjectileController : MonoBehaviour
     public GameObject projectilePrefab;
     public float launchForce = 700f;
     public float lifetime = 5f; // Lifetime of the projectile in seconds
+    public float damage = 10f;
+
+    public float Damage { get => damage; }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            LaunchProjectile();
-        }
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
         Debug.DrawRay(transform.position, forward, Color.green);
     }
@@ -24,9 +23,9 @@ public class ProjectileController : MonoBehaviour
         ga.Attracted = true;
     }
 
-    void LaunchProjectile() 
-    { 
-    
+
+    public void LaunchProjectile()
+    {
         Vector3 launchPosition = transform.position + (transform.forward * 2.0f);
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         SoundManager.Instance.PlaySoundEffect("projectile");
