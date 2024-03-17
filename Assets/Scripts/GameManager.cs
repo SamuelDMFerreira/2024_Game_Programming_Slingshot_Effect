@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnStateChange;
 
     // To notify subscribers of the health change
-    // Health bar controller will subscribe to this event to update the health bar
-    public static event Action<float, float> OnHealthChange;
+    public static event Action<int, float, float> OnHealthChange;
 
     void Awake()
     {
@@ -70,6 +69,10 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Loading Main Scene");
                 controller.LoadMainScene();
 
+                // Find the player objects and join them to the game
+                player1 = GameObject.Find("Player1");
+                player2 = GameObject.Find("Player2");
+
                 PlayerInputManager.instance.JoinPlayer(0);
                 PlayerInputManager.instance.JoinPlayer(1);
 
@@ -90,13 +93,13 @@ public class GameManager : MonoBehaviour
     /// <param name="currentHealth"> The current health of the player </param>
     /// <param name="maxHealth"> The maximum health of the player </param>
     /// <param name="player"> The player object </param>
-    public void UpdateHealth(float currentHealth, float maxHealth)
+    public void UpdateHealth(int playerNumber, float currentHealth, float maxHealth)
     {
         // Invoke the event to notify subscribers of the health change
-        OnHealthChange?.Invoke(currentHealth, maxHealth);
+        OnHealthChange?.Invoke(playerNumber, currentHealth, maxHealth);
 
         // If the player's health is less than or equal to 0, update the game state to GameOver
-        if (currentHealth <= 0)
+        if (player1.GetComponent<PlayerHealth>().NoHealth())
         {
             UpdateState(GameState.GameOver);
         }
