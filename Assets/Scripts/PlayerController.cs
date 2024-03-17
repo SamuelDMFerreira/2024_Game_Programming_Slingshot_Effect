@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
     }
@@ -79,6 +80,8 @@ public class PlayerController : MonoBehaviour
     {
         if (canBoost)
         {
+            SoundManager.Instance.PlaySoundEffect("boost");
+
             rb.AddForce(transform.forward * thrustPower, ForceMode.Impulse);
             isBoosting = true; // Set the boost flag
             canBoost = false; // Disable further boosting until cooldown is over

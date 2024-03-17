@@ -703,8 +703,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityPull: 9.8
   orbitRadius: 50
-  minDistance: 50
-  orbitalSpeed: 50
 --- !u!54 &1703509277
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -968,8 +966,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityPull: 9.8
   orbitRadius: 50
-  minDistance: 50
-  orbitalSpeed: 50
 --- !u!114 &1844822358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,8 +1237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityPull: 9.8
   orbitRadius: 50
-  minDistance: 50
-  orbitalSpeed: 50
 --- !u!54 &2040279112
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1510,8 +1504,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityPull: 9.8
   orbitRadius: 50
-  minDistance: 50
-  orbitalSpeed: 50
 --- !u!54 &2070288091
 Rigidbody:
   m_ObjectHideFlags: 0
