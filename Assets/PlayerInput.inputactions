@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "look toward",
+                    "type": "Value",
+                    "id": "c6214e45-9ade-4051-801b-91688d7ac121",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -103,7 +112,7 @@
                     "id": "b9a739c0-b63a-4de7-8a83-1ec189d92346",
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "Gamepad",
                     "action": "turn",
                     "isComposite": false,
@@ -161,6 +170,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6ae0694-0161-4bd2-b463-71396c749128",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "NormalizeVector2",
+                    "groups": "Gamepad",
+                    "action": "look toward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2c280a3-ddd1-47bd-9dab-7373c4e746bd",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "NormalizeVector2",
+                    "groups": "",
+                    "action": "look toward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
