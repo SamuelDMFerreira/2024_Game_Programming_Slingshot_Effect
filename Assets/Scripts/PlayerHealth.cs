@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private GameObject player;
     public float maxHealth;
     private float currentHealth;
+    private int playerNumber;
 
     public float CurrentHealth { get => currentHealth; }
 
     // Start is called before the first frame update
     void Start()
     {
+        player = this.transform.parent.gameObject;
+        playerNumber = player.GetComponent<PlayerController>().playerNumber;
         currentHealth = maxHealth;
     }
 
@@ -23,7 +27,21 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= dmg;
 
-        GameManager.instance.UpdateHealth(currentHealth, maxHealth);
+        GameManager.instance.UpdateHealth(playerNumber, currentHealth, maxHealth);
+    }
+
+    private void Update()
+    {
+        // For testing purposes
+        if (Input.GetKeyDown(KeyCode.K) && playerNumber == 1)
+        {
+            TakeDamage(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L) && playerNumber == 2)
+        {
+            TakeDamage(1);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
