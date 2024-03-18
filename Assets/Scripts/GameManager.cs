@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     private GameObject player1;
     private GameObject player2;
 
+    private int winner;
+
+    public int Winner { get; private set; } = -1;
+
     public static GameManager instance { get; private set; }
 
     public GameState currentState { get; private set; }
@@ -22,8 +26,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnStateChange;
 
     // To notify subscribers of the health change
-    // Health bar controller will subscribe to this event to update the health bar
-    public static event Action<float, float> OnHealthChange;
+    public static event Action<int, float, float> OnHealthChange;
 
     void Awake()
     {
@@ -43,6 +46,7 @@ public class GameManager : MonoBehaviour
         }
 
         controller = gameObject.AddComponent<SceneController>();
+        winner = -1;
     }
 
     /// <summary>
@@ -69,14 +73,12 @@ public class GameManager : MonoBehaviour
             case GameState.Play:
                 Debug.Log("Loading Main Scene");
                 controller.LoadMainScene();
-
-                PlayerInputManager.instance.JoinPlayer(0);
-                PlayerInputManager.instance.JoinPlayer(1);
-
+                JoinPlayers();
                 break;
-            case GameState.GameOver:
+            case GameState.End:
                 Debug.Log("Loading Game Over Scene");
                 controller.LoadEndScene();
+                Debug.Log($"Player {winner} wins");
                 break;
         }
 
@@ -89,16 +91,29 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="currentHealth"> The current health of the player </param>
     /// <param name="maxHealth"> The maximum health of the player </param>
-    /// <param name="player"> The player object </param>
-    public void UpdateHealth(float currentHealth, float maxHealth)
+    /// <param name="playerNumber"> The ID of player </param>
+    public void UpdateHealth(int playerNumber, float currentHealth, float maxHealth)
     {
         // Invoke the event to notify subscribers of the health change
-        OnHealthChange?.Invoke(currentHealth, maxHealth);
+        OnHealthChange?.Invoke(playerNumber, currentHealth, maxHealth);
 
-        // If the player's health is less than or equal to 0, update the game state to GameOver
+        // If the current health passed in is <= 0, then determine the winner based on the player number and update the game state
         if (currentHealth <= 0)
         {
-            UpdateState(GameState.GameOver);
+            winner = playerNumber == 1 ? 2 : 1;
+            UpdateState(GameState.End);
         }
+    }
+
+    /// <summary>
+    /// Initiate the players with the player input manager
+    /// </summary>
+    public void JoinPlayers()
+    {
+        player1 = GameObject.Find("Player1");
+        player2 = GameObject.Find("Player2");
+
+        PlayerInputManager.instance.JoinPlayer(0);
+        PlayerInputManager.instance.JoinPlayer(1);
     }
 }

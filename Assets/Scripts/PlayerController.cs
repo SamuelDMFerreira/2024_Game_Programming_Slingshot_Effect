@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    public int playerNumber;
     public float moveSpeed = 10f;
     public float rotationSpeed = 100f;
     public float maxSpeed = 20f;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private float cooldownTimer = 0f; // Timer to track the boost cooldown
     private bool isBoosting = false;
     private bool canBoost = true; // Flag to check if the boost can be applied, considering the cooldown
+
+    public int PlayerNumber { get => playerNumber; }
 
     void Start()
     {
@@ -82,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canBoost)
         {
-            SoundManager.Instance.PlaySoundEffect("boost");
+            // SoundManager.Instance.PlaySoundEffect("boost");
 
             rb.AddForce(transform.forward * thrustPower, ForceMode.Impulse);
             isBoosting = true; // Set the boost flag
