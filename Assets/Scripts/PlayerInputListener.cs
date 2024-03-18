@@ -40,27 +40,27 @@ public class PlayerInputListener : MonoBehaviour
         playerCtrl.HandleInputRotation(turnFactor);
     }
 
-    public void OnThrust(InputValue inputVal)
+    private void OnThrust(InputValue inputVal)
     {
         isThrusting = inputVal.isPressed;
     }
 
-    public void OnBoost(InputValue inputVal)
+    private void OnBoost(InputValue inputVal)
     {
         isBoosting = inputVal.isPressed;
     }
 
-    public void OnTurn(InputValue inputVal)
+    private void OnTurn(InputValue inputVal)
     {
         turnFactor = inputVal.Get<float>();
     }
 
-    public void OnFire()
+    private void OnFire()
     {
         bulletCtrl.LaunchProjectile();
     }
 
-    public void OnLooktoward(InputValue inputVal)
+    private void OnLooktoward(InputValue inputVal)
     {
         Vector2 posDiff = inputVal.Get<Vector2>();
         Debug.Log(posDiff);
