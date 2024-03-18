@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool isBoosting = false;
     private bool canBoost = true; // Flag to check if the boost can be applied, considering the cooldown
 
+    public int PlayerNumber { get => playerNumber; }
+
     void Start()
     {
 
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canBoost)
         {
-            SoundManager.Instance.PlaySoundEffect("boost");
+            // SoundManager.Instance.PlaySoundEffect("boost");
 
             rb.AddForce(transform.forward * thrustPower, ForceMode.Impulse);
             isBoosting = true; // Set the boost flag

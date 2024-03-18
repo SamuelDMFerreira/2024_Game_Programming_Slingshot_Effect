@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     private GameObject player1;
     private GameObject player2;
 
+    private int winner;
+
+    public int Winner { get; private set; } = -1;
+
     public static GameManager instance { get; private set; }
 
     public GameState currentState { get; private set; }
@@ -42,6 +46,7 @@ public class GameManager : MonoBehaviour
         }
 
         controller = gameObject.AddComponent<SceneController>();
+        winner = -1;
     }
 
     /// <summary>
@@ -68,18 +73,12 @@ public class GameManager : MonoBehaviour
             case GameState.Play:
                 Debug.Log("Loading Main Scene");
                 controller.LoadMainScene();
-
-                // Find the player objects and join them to the game
-                player1 = GameObject.Find("Player1");
-                player2 = GameObject.Find("Player2");
-
-                PlayerInputManager.instance.JoinPlayer(0);
-                PlayerInputManager.instance.JoinPlayer(1);
-
+                JoinPlayers();
                 break;
-            case GameState.GameOver:
+            case GameState.End:
                 Debug.Log("Loading Game Over Scene");
                 controller.LoadEndScene();
+                Debug.Log($"Player {winner} wins");
                 break;
         }
 
@@ -92,16 +91,29 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="currentHealth"> The current health of the player </param>
     /// <param name="maxHealth"> The maximum health of the player </param>
-    /// <param name="player"> The player object </param>
+    /// <param name="playerNumber"> The ID of player </param>
     public void UpdateHealth(int playerNumber, float currentHealth, float maxHealth)
     {
         // Invoke the event to notify subscribers of the health change
         OnHealthChange?.Invoke(playerNumber, currentHealth, maxHealth);
 
-        // If the player's health is less than or equal to 0, update the game state to GameOver
-        if (player1.GetComponent<PlayerHealth>().NoHealth())
+        // If the current health passed in is <= 0, then determine the winner based on the player number and update the game state
+        if (currentHealth <= 0)
         {
-            UpdateState(GameState.GameOver);
+            winner = playerNumber == 1 ? 2 : 1;
+            UpdateState(GameState.End);
         }
+    }
+
+    /// <summary>
+    /// Initiate the players with the player input manager
+    /// </summary>
+    public void JoinPlayers()
+    {
+        player1 = GameObject.Find("Player1");
+        player2 = GameObject.Find("Player2");
+
+        PlayerInputManager.instance.JoinPlayer(0);
+        PlayerInputManager.instance.JoinPlayer(1);
     }
 }
