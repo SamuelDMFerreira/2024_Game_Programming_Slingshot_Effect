@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 5ec725b522ca3b3f294f981e1a050079
   - enabled: 1
-    path: Assets/Scenes/JupiterMap.unity
+    path: Assets/Scenes/TestScenes/Input.unity
     guid: 6b857318a76d3f21686a476406d55023
   m_configObjects: {}
