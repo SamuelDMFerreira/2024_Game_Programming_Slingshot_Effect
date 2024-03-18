@@ -15,6 +15,7 @@ public class PlayerInputListener : MonoBehaviour
 {
     private PlayerController playerCtrl;
     private ProjectileController bulletCtrl;
+    [SerializeField] private CameraController cameraCtrl;
 
     // Controls
     private bool isThrusting = false;
@@ -25,6 +26,8 @@ public class PlayerInputListener : MonoBehaviour
     {
         playerCtrl = GetComponent<PlayerController>();
         bulletCtrl = GetComponent<ProjectileController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -57,8 +60,10 @@ public class PlayerInputListener : MonoBehaviour
         bulletCtrl.LaunchProjectile();
     }
 
-    public void OnLooktoward()
+    public void OnLooktoward(InputValue inputVal)
     {
-        Debug.Log("I HAVE EYES");
+        Vector2 posDiff = inputVal.Get<Vector2>();
+        Debug.Log(posDiff);
+        cameraCtrl.UpdateCameraPos(posDiff);
     }
 }
