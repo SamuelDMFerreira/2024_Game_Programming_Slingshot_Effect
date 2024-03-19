@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87f3e7b121a5c74d8f55387cc4ce975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
   moveSpeed: 10
   rotationSpeed: 50
   maxSpeed: 20
@@ -377,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cfe55055ca09d8e8b008db2f3868f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraCtrl: {fileID: 5864041270151915980}
 --- !u!114 &340014038439647982
 MonoBehaviour:
   m_ObjectHideFlags: 0

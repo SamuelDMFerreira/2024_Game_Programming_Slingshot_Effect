@@ -15,6 +15,7 @@ public class PlayerInputListener : MonoBehaviour
 {
     private PlayerController playerCtrl;
     private ProjectileController bulletCtrl;
+    [SerializeField] private CameraController cameraCtrl;
 
     // Controls
     private bool isThrusting = false;
@@ -25,6 +26,8 @@ public class PlayerInputListener : MonoBehaviour
     {
         playerCtrl = GetComponent<PlayerController>();
         bulletCtrl = GetComponent<ProjectileController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -37,27 +40,30 @@ public class PlayerInputListener : MonoBehaviour
         playerCtrl.HandleInputRotation(turnFactor);
     }
 
-    public void OnThrust(InputValue inputVal)
+    private void OnThrust(InputValue inputVal)
     {
-        Debug.Log("Thrusting");
         isThrusting = inputVal.isPressed;
     }
 
-    public void OnBoost(InputValue inputVal)
+    private void OnBoost(InputValue inputVal)
     {
-        Debug.Log("Boosting");
         isBoosting = inputVal.isPressed;
     }
 
-    public void OnTurn(InputValue inputVal)
+    private void OnTurn(InputValue inputVal)
     {
-        Debug.Log("Turning");
         turnFactor = inputVal.Get<float>();
     }
 
-    public void OnFire()
+    private void OnFire()
     {
-        Debug.Log("Firing");
         bulletCtrl.LaunchProjectile();
+    }
+
+    private void OnLooktoward(InputValue inputVal)
+    {
+        Vector2 posDiff = inputVal.Get<Vector2>();
+        Debug.Log($"CameraPosdiff {posDiff}");
+        cameraCtrl.UpdateCameraPos(posDiff);
     }
 }

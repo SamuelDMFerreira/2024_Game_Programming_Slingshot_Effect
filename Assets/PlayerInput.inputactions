@@ -7,21 +7,21 @@
             "actions": [
                 {
                     "name": "thrust",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "8575baa3-d849-489b-9c71-661a81fa44ff",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "boost",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e70ad396-f872-4fe1-a28f-950df4d37120",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "turn",
@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "look toward",
+                    "type": "Value",
+                    "id": "c6214e45-9ade-4051-801b-91688d7ac121",
+                    "expectedControlType": "Vector2",
+                    "processors": "ScaleVector2(x=0.01,y=0.01)",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -103,7 +112,7 @@
                     "id": "b9a739c0-b63a-4de7-8a83-1ec189d92346",
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "Gamepad",
                     "action": "turn",
                     "isComposite": false,
@@ -163,6 +172,28 @@
                     "action": "fire",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6ae0694-0161-4bd2-b463-71396c749128",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "look toward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2c280a3-ddd1-47bd-9dab-7373c4e746bd",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "look toward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -174,6 +205,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
