@@ -12,6 +12,7 @@ public class HealthBarController : MonoBehaviour
     private float maxWidth = 0.0f;
     // The edge the health bar is anchored at (Right or Left)
     [SerializeField] private RectTransform.Edge anchoredEdge;
+    [SerializeField] private int playerNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -66,10 +67,13 @@ public class HealthBarController : MonoBehaviour
     /// </summary>
     /// <param name="currentHealth">Current health</param>
     /// <param name="maxHealth">Maximum health</param>
-    private void HandleHealthChange(float currentHealth, float maxHealth)
+    private void HandleHealthChange(int ID, float currentHealth, float maxHealth)
     {
-        var fillRatio = currentHealth / maxHealth;
+        if (ID == this.playerNumber)
+        {
+            var fillRatio = currentHealth / maxHealth;
 
-        SetBarFill(fillRatio);
+            SetBarFill(fillRatio);
+        }
     }
 }
