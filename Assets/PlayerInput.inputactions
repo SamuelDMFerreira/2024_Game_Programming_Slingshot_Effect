@@ -7,21 +7,21 @@
             "actions": [
                 {
                     "name": "thrust",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "8575baa3-d849-489b-9c71-661a81fa44ff",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "boost",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e70ad396-f872-4fe1-a28f-950df4d37120",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "turn",
