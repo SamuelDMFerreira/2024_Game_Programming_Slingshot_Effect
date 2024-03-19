@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     public void UpdateHealth(int playerID, float currentHealth, float maxHealth)
     {
         Debug.Log("Player " + playerID + " health: " + currentHealth + " / " + maxHealth);
+        
         OnHealthChange?.Invoke(playerID, currentHealth, maxHealth);
 
         if (currentHealth <= 0)
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < PlayerInputManager.instance.playerCount; i++)
         {
             PlayerInput playerInput = PlayerInput.GetPlayerByIndex(i);
-            string playerName = (i == 1) ? "Player 1" : "Player 2";
+            string playerName = (i == 0) ? "Player 1" : "Player 2";
             Debug.Log(playerName + " connected devices:");
 
             foreach (InputDevice device in playerInput.devices)
