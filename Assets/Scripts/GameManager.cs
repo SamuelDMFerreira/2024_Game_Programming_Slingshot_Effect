@@ -6,27 +6,28 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private SceneController controller;
-
-    private GameObject player1;
-    private GameObject player2;
+    [SerializeField]
+    private GameObject playerPrefab;
+    [SerializeField]
+    private List<Transform> spawns = new List<Transform>();
 
     private int winner;
-
-    public int Winner { get; private set; } = -1;
-
-    public static GameManager instance { get; private set; }
+    private SceneController sceneController;
 
     public GameState currentState { get; private set; }
 
-    // To notify subscribers of the state change
-    public static event Action<GameState> OnStateChange;
+    public int Winner { get => winner; }
 
-    // To notify subscribers of the health change
+    // INSTANCE
+    public static GameManager instance { get; private set; }
+
+    // EVENTS
     public static event Action<int, float, float> OnHealthChange;
+    public static event Action<GameState> OnStateChange;
 
     void Awake()
     {
@@ -34,25 +35,26 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
-            // On awake, the initial game state is set to the menu
-            this.currentState = GameState.Menu;
-            Debug.Log("Initial Game State: " + GameState.Menu);
         }
         else
         {
-            // If there is already a game manager, destroy the new one
             Destroy(gameObject);
         }
 
-        controller = gameObject.AddComponent<SceneController>();
-        winner = -1;
+        sceneController = gameObject.AddComponent<SceneController>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    /// <summary>
-    /// Update the current state of the game
-    /// </summary>
-    /// <param name="newState"> The new state that the game should change to </param>
+    private void Start()
+    {
+        this.UpdateState(GameState.Menu);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     public void UpdateState(GameState newState)
     {
         // If the new state is the same as the current state, do nothing
@@ -61,59 +63,73 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Update the current state
-        currentState = newState;
+        this.currentState = newState;
 
         switch (newState)
         {
             case GameState.Menu:
-                Debug.Log("Loading Menu Scene");
-                controller.LoadStartScene();
+                Debug.Log("Loading start scene");
+                sceneController.LoadStartScene();
                 break;
             case GameState.Play:
-                Debug.Log("Loading Main Scene");
-                controller.LoadMainScene();
-                JoinPlayers();
+                Debug.Log("Loading main scene");
+                sceneController.LoadMainScene();
+                this.winner = -1;
                 break;
             case GameState.End:
-                Debug.Log("Loading Game Over Scene");
-                controller.LoadEndScene();
-                Debug.Log($"Player {winner} wins");
+                Debug.Log("Loading end scene");
+                sceneController.LoadEndScene();
                 break;
         }
 
-        // Invoke the event to notify subscribers of the state change
         OnStateChange?.Invoke(newState);
     }
 
-    /// <summary>
-    /// Update the health of the player
-    /// </summary>
-    /// <param name="currentHealth"> The current health of the player </param>
-    /// <param name="maxHealth"> The maximum health of the player </param>
-    /// <param name="playerNumber"> The ID of player </param>
-    public void UpdateHealth(int playerNumber, float currentHealth, float maxHealth)
+    public void UpdateHealth(int playerID, float currentHealth, float maxHealth)
     {
-        // Invoke the event to notify subscribers of the health change
-        OnHealthChange?.Invoke(playerNumber, currentHealth, maxHealth);
+        Debug.Log("Player " + playerID + " health: " + currentHealth + " / " + maxHealth);
+        
+        OnHealthChange?.Invoke(playerID, currentHealth, maxHealth);
 
-        // If the current health passed in is <= 0, then determine the winner based on the player number and update the game state
         if (currentHealth <= 0)
         {
-            winner = playerNumber == 1 ? 2 : 1;
+            this.winner = (playerID == 1) ? 2 : 1;
+            Debug.Log("Player " + winner + " wins!");
+
             UpdateState(GameState.End);
         }
     }
 
-    /// <summary>
-    /// Initiate the players with the player input manager
-    /// </summary>
-    public void JoinPlayers()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        player1 = GameObject.Find("Player1");
-        player2 = GameObject.Find("Player2");
+        // Ensure scene is fully loaded before joining players
+        if (scene.name == "JupiterMap")
+        {
+            JoinPlayers();
+        }
+    }
 
-        PlayerInputManager.instance.JoinPlayer(0);
-        PlayerInputManager.instance.JoinPlayer(1);
+    private void JoinPlayers()
+    {
+        GameObject player1 = Instantiate(playerPrefab, spawns[0].position, Quaternion.identity);
+        player1.GetComponent<PlayerController>().PlayerNumber = 1;
+
+        // FIXME: Rotating player2 to face player1 will cause it to be behind the camera
+        GameObject player2 = Instantiate(playerPrefab, spawns[1].position, Quaternion.identity);
+        player2.GetComponent<PlayerController>().PlayerNumber = 2;
+
+        Debug.Log("Total players: " + PlayerInputManager.instance.playerCount);
+
+        for (int i = 0; i < PlayerInputManager.instance.playerCount; i++)
+        {
+            PlayerInput playerInput = PlayerInput.GetPlayerByIndex(i);
+            string playerName = (i == 0) ? "Player 1" : "Player 2";
+            Debug.Log(playerName + " connected devices:");
+
+            foreach (InputDevice device in playerInput.devices)
+            {
+                Debug.Log("- " + device);
+            }
+        }
     }
 }
