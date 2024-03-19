@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public int playerNumber;
+    private int playerNumber;
     public float moveSpeed = 10f;
     public float rotationSpeed = 100f;
     public float maxSpeed = 20f;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool isBoosting = false;
     private bool canBoost = true; // Flag to check if the boost can be applied, considering the cooldown
 
-    public int PlayerNumber { get => playerNumber; }
+    public int PlayerNumber { get; set; }
 
     void Start()
     {
@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(transform.forward * thrustPower * Time.deltaTime, ForceMode.Impulse);
             isBoosting = true; // Set the boost flag
             canBoost = false; // Disable further boosting until cooldown is over
-            Debug.Log("Escape thrust applied!");
         }
     }
 }

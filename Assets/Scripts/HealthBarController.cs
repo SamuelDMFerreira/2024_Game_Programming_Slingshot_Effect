@@ -67,9 +67,9 @@ public class HealthBarController : MonoBehaviour
     /// </summary>
     /// <param name="currentHealth">Current health</param>
     /// <param name="maxHealth">Maximum health</param>
-    private void HandleHealthChange(int ID, float currentHealth, float maxHealth)
+    private void HandleHealthChange(int playerID, float currentHealth, float maxHealth)
     {
-        if (ID == this.playerNumber)
+        if (playerID == this.playerNumber)
         {
             var fillRatio = currentHealth / maxHealth;
 
