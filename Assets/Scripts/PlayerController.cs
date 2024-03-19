@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     // applies smaller thrust, which won't have a cooldown
     public void ApplySmallThrust()
     {
-        rb.AddForce(transform.forward * moveSpeed);
+        rb.AddForce(transform.forward * moveSpeed * Time.deltaTime);
     }
 
     // Input: Expected a number from -1.0 to 1.0 matching with player input
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         {
             // SoundManager.Instance.PlaySoundEffect("boost");
 
-            rb.AddForce(transform.forward * thrustPower, ForceMode.Impulse);
+            rb.AddForce(transform.forward * thrustPower * Time.deltaTime, ForceMode.Impulse);
             isBoosting = true; // Set the boost flag
             canBoost = false; // Disable further boosting until cooldown is over
         }
