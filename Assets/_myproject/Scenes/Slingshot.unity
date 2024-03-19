@@ -432,32 +432,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 203911545}, m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp, m_MethodName: ApplySmallThrust, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
-    m_ActionId: 8575baa3-d849-489b-9c71-661a81fa44ff
-    m_ActionName: gameplay/thrust[/Keyboard/w]
-  - m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 203911545}, m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp, m_MethodName: ApplyEscapeThrust, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
-    m_ActionId: e70ad396-f872-4fe1-a28f-950df4d37120
-    m_ActionName: gameplay/boost[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 203911545}, m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp, m_MethodName: HandleInputRotation, m_Mode: 4, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
-    m_ActionId: 46490a29-f08c-412e-942c-9161df0f4cbe
-    m_ActionName: gameplay/turn[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-    m_ActionId: 45f32774-dd6d-4945-bacb-0d83c71433da
-    m_ActionName: gameplay/fire[/Mouse/leftButton]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: gameplay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+      - {m_Target: {fileID: 203911545}, m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp: }
 --- !u!114 &203911554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,7 +1308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 08e887863455f3b41be02d8c55a47c35, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
