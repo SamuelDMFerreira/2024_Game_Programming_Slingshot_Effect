@@ -7,15 +7,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private float maxHealth;
     private float currentHealth;
-    private GameObject player;
     private int playerID;
 
     public float CurrentHealth { get => currentHealth; }
 
     void Start()
     {
-        player = this.transform.parent.gameObject;
-        playerID = player.GetComponent<PlayerController>().PlayerNumber;
+        playerID = GetComponent<PlayerController>().PlayerNumber;
         currentHealth = maxHealth;
     }
 
@@ -27,31 +25,26 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(player);
+            Destroy(gameObject);
         }
     }
 
     void Update()
     {
-        // Test damage
-        if (playerID == 1 && Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(1);
-        }
-        if (playerID == 2 && Input.GetKeyDown(KeyCode.O))
-        {
-            TakeDamage(1);
-        }
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         // If the player is hit by a projectile, take damage
-        if (other.gameObject.name == "Projectile")
+        if (collision.gameObject.CompareTag("Projectile"))
         {
-            var damage = other.gameObject.GetComponent<ProjectileController>().damage;
+            Projectile projectile = collision.gameObject.GetComponent<Projectile>();
 
-            TakeDamage(damage);
+            if (projectile.PlayerID != playerID)
+            {
+                TakeDamage(projectile.Damage);
+            }
         }
     }
 }

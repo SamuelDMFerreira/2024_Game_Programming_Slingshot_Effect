@@ -114,7 +114,6 @@ public class GameManager : MonoBehaviour
         GameObject player1 = Instantiate(playerPrefab, spawns[0].position, Quaternion.identity);
         player1.GetComponent<PlayerController>().PlayerNumber = 1;
 
-        // FIXME: Rotating player2 to face player1 will cause it to be behind the camera
         GameObject player2 = Instantiate(playerPrefab, spawns[1].position, Quaternion.identity);
         player2.GetComponent<PlayerController>().PlayerNumber = 2;
 
