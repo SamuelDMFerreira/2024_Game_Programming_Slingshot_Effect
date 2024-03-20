@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField]
     private float damage = 1.0f;
-
     private int playerID;
 
     public float Damage { get => damage; }
@@ -18,9 +17,9 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.GetComponent<PlayerController>().playerID != this.PlayerID)
+            if (collision.gameObject.GetComponent<PlayerController>().PlayerID != this.PlayerID)
             {
-                Debug.Log("Projectile hit player " + collision.gameObject.GetComponent<PlayerController>().playerID);
+                Debug.Log("Projectile hit player " + collision.gameObject.GetComponent<PlayerController>().PlayerID);
                 Destroy(this.gameObject);
             }
         }

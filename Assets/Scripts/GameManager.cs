@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,8 +11,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private List<Transform> spawns = new List<Transform>();
+    [SerializeField]
+    private GameObject playerPrefab;
     private GameObject player1;
     private GameObject player2;
+
     private SceneController sceneController;
     private int winner;
 
@@ -39,11 +45,17 @@ public class GameManager : MonoBehaviour
         }
 
         sceneController = gameObject.AddComponent<SceneController>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
     {
         this.UpdateState(GameState.Menu);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 
@@ -66,7 +78,6 @@ public class GameManager : MonoBehaviour
             case GameState.Play:
                 Debug.Log("Loading main scene");
                 sceneController.LoadMainScene();
-                AddPlayers();
                 break;
             case GameState.End:
                 Debug.Log("Loading end scene");
@@ -92,13 +103,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddPlayers()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        player1 = GameObject.FindGameObjectWithTag("Player1");
-        player1.SetActive(true);
+        if (scene.name == "JupiterMap")
+        {
+            AddPlayers();
+        }
+    }
 
-        player2 = GameObject.FindGameObjectWithTag("Player2");
-        player2.SetActive(true);
+    private void AddPlayers()
+    {
+        player1 = Instantiate(playerPrefab, spawns[0].position, Quaternion.identity);
+        player1.GetComponent<PlayerController>().PlayerID = 1;
+
+        // Spawn player 2 at the second spawn point facing the opposite direction
+        player2 = Instantiate(playerPrefab, spawns[1].position, Quaternion.Euler(new Vector3(0, 180, 0)));
+        player2.GetComponent<PlayerController>().PlayerID = 2;
+
+        // Flip player 2's camera so it's behind the player
+        GameObject player2Camera = player2.transform.Find("Player Camera").gameObject;
+
+        Vector3 cameraPosition = player2Camera.transform.localPosition;
+        cameraPosition.z = -cameraPosition.z;
+        player2Camera.transform.localPosition = cameraPosition;
 
         this.winner = -1;
     }

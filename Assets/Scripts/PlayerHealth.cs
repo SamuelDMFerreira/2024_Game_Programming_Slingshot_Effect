@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField]
+    private float damageFactor;
     [SerializeField]
     private float maxHealth;
     private float currentHealth;
@@ -13,10 +16,20 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        playerID = GetComponent<PlayerController>().playerID;
+        playerID = GetComponent<PlayerController>().PlayerID;
         currentHealth = maxHealth;
+    }
 
-        Debug.Log("Player " + playerID + " has " + currentHealth + " health");
+    void Update()
+    {
+        GameObject Jupiter = GameObject.Find("Jupiter");
+        float orbitRadius = Jupiter.GetComponent<OrbitController>().orbitRadius;
+        float distance = Vector3.Distance(Jupiter.transform.position, transform.position);
+
+        if (distance <= orbitRadius && distance < 80.0f)
+        {
+            TakeOrbitDamage(distance, orbitRadius);
+        }
     }
 
     public void TakeDamage(float dmg)
@@ -29,6 +42,16 @@ public class PlayerHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void TakeOrbitDamage(float distance, float orbitRadius)
+    {
+        // Calculate the damage multiplier based on the distance from Jupiter (the closer, the higher the damage)
+        float distanceFactor = Mathf.Pow(1.0f - (distance / orbitRadius), 2.0f);
+
+        TakeDamage(damageFactor * distanceFactor * maxHealth * Time.deltaTime);
+
+        Debug.Log("Player " + playerID + " is " + distance + " units away from Jupiter. Taking " + damageFactor * maxHealth * Time.deltaTime + " damage per second.");
     }
 
     private void OnCollisionEnter(Collision collision)

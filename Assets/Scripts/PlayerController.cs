@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public int playerID;
+    private int playerID;
     public float moveSpeed = 10f;
     public float rotationSpeed = 100f;
     public float maxSpeed = 20f;
@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private float cooldownTimer = 0f; // Timer to track the boost cooldown
     private bool isBoosting = false;
     private bool canBoost = true; // Flag to check if the boost can be applied, considering the cooldown
+
+    public int PlayerID { get; set; }
 
     void Start()
     {

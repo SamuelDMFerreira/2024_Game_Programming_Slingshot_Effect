@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87f3e7b121a5c74d8f55387cc4ce975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
   moveSpeed: 10
   rotationSpeed: 50
   maxSpeed: 20
@@ -294,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd6a003f12f5fe46bcc97eb028ab967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageFactor: 0.05
   maxHealth: 4
 --- !u!114 &5930872943985922959
 MonoBehaviour:
