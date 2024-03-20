@@ -463,9 +463,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1513416896222315350, guid: 28c99b57003f522478007d8e953a71fe, type: 3}
+      propertyPath: m_Range
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 1568308341263192273, guid: 28c99b57003f522478007d8e953a71fe, type: 3}
       propertyPath: m_Name
       value: Spaceship 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498665671455684290, guid: 28c99b57003f522478007d8e953a71fe, type: 3}
+      propertyPath: m_Range
+      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
