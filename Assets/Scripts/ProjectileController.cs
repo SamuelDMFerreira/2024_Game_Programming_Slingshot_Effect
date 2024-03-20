@@ -23,7 +23,7 @@ public class ProjectileController : MonoBehaviour
 
     public void LaunchProjectile()
     {
-        Vector3 launchPosition = transform.position + (transform.forward * 2.0f);
+        Vector3 launchPosition = transform.position + (transform.forward * 6.0f);
 
         Debug.Log("Launching projectile");
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
@@ -36,7 +36,7 @@ public class ProjectileController : MonoBehaviour
         {
             // temporary disable projection gravitional attraction and set it to have same initial velocity as ship
             ga.Attracted = false;
-            //rb.velocity = this.gameObject.GetComponent<Rigidbody>().velocity;
+            rb.velocity = this.gameObject.GetComponent<Rigidbody>().velocity;
             rb.AddForce(transform.forward * launchForce);
             StartCoroutine(turnOn(ga));
         }
