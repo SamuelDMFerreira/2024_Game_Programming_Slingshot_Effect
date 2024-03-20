@@ -46,7 +46,7 @@
                     "type": "Value",
                     "id": "c6214e45-9ade-4051-801b-91688d7ac121",
                     "expectedControlType": "Vector2",
-                    "processors": "ScaleVector2(x=0.01,y=0.01)",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -88,7 +88,7 @@
                 {
                     "name": "",
                     "id": "4016b82a-32be-4c57-b242-66931153b787",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -99,7 +99,7 @@
                 {
                     "name": "",
                     "id": "0e322195-8aa3-47ef-a38c-398d6c2c502c",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -178,7 +178,7 @@
                     "id": "d6ae0694-0161-4bd2-b463-71396c749128",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=0.4,y=0.4)",
                     "groups": "Gamepad",
                     "action": "look toward",
                     "isComposite": false,
@@ -189,7 +189,7 @@
                     "id": "a2c280a3-ddd1-47bd-9dab-7373c4e746bd",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
                     "groups": "",
                     "action": "look toward",
                     "isComposite": false,
