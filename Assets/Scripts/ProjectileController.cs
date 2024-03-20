@@ -23,7 +23,7 @@ public class ProjectileController : MonoBehaviour
 
     public void LaunchProjectile()
     {
-        Vector3 launchPosition = transform.position + (transform.forward * 6.0f);
+        Vector3 launchPosition = transform.position + (transform.forward * 9.0f);
 
         Debug.Log("Launching projectile");
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
