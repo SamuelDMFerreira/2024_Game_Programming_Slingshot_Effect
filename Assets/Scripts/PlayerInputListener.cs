@@ -63,7 +63,6 @@ public class PlayerInputListener : MonoBehaviour
     private void OnLooktoward(InputValue inputVal)
     {
         Vector2 posDiff = inputVal.Get<Vector2>();
-        Debug.Log($"CameraPosdiff {posDiff}");
         cameraCtrl.UpdateCameraPos(posDiff);
     }
 }

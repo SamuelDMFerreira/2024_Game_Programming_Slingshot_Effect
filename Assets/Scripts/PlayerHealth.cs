@@ -1,22 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
+    private float damageFactor;
+    [SerializeField]
     private float maxHealth;
     private float currentHealth;
-    private GameObject player;
     private int playerID;
 
     public float CurrentHealth { get => currentHealth; }
 
     void Start()
     {
-        player = this.transform.parent.gameObject;
-        playerID = player.GetComponent<PlayerController>().PlayerNumber;
+        playerID = GetComponent<PlayerController>().PlayerID;
         currentHealth = maxHealth;
+    }
+
+    void Update()
+    {
+        GameObject Jupiter = GameObject.Find("Jupiter");
+        float orbitRadius = Jupiter.GetComponent<OrbitController>().orbitRadius;
+        float distance = Vector3.Distance(Jupiter.transform.position, transform.position);
+
+        if (distance <= orbitRadius && distance < 80.0f)
+        {
+            TakeOrbitDamage(distance, orbitRadius);
+        }
     }
 
     public void TakeDamage(float dmg)
@@ -27,31 +40,32 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(player);
+            Destroy(gameObject);
         }
     }
 
-    void Update()
+    private void TakeOrbitDamage(float distance, float orbitRadius)
     {
-        // Test damage
-        if (playerID == 1 && Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(1);
-        }
-        if (playerID == 2 && Input.GetKeyDown(KeyCode.O))
-        {
-            TakeDamage(1);
-        }
+        // Calculate the damage multiplier based on the distance from Jupiter (the closer, the higher the damage)
+        float distanceFactor = Mathf.Pow(1.0f - (distance / orbitRadius), 2.0f);
+
+        TakeDamage(damageFactor * distanceFactor * maxHealth * Time.deltaTime);
+
+        Debug.Log("Player " + playerID + " is " + distance + " units away from Jupiter. Taking " + damageFactor * maxHealth * Time.deltaTime + " damage per second.");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         // If the player is hit by a projectile, take damage
-        if (other.gameObject.name == "Projectile")
+        if (collision.gameObject.CompareTag("Projectile"))
         {
-            var damage = other.gameObject.GetComponent<ProjectileController>().damage;
+            Projectile projectile = collision.gameObject.GetComponent<Projectile>();
 
-            TakeDamage(damage);
+            // Got hit by an enemy projectile
+            if (projectile.PlayerID != playerID)
+            {
+                TakeDamage(projectile.Damage);
+            }
         }
     }
 }

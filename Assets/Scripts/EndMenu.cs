@@ -19,7 +19,7 @@ public class EndMenu : MonoBehaviour
 
     private void OnStateChange(GameState newState)
     {
-        
+
     }
 
     public void ToggleMenu()

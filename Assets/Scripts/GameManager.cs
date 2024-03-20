@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,12 +12,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject playerPrefab;
-    [SerializeField]
     private List<Transform> spawns = new List<Transform>();
+    [SerializeField]
+    private GameObject playerPrefab;
+    private GameObject player1;
+    private GameObject player2;
 
-    private int winner;
     private SceneController sceneController;
+    private int winner;
 
     public GameState currentState { get; private set; }
 
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+
     public void UpdateState(GameState newState)
     {
         // If the new state is the same as the current state, do nothing
@@ -74,7 +78,6 @@ public class GameManager : MonoBehaviour
             case GameState.Play:
                 Debug.Log("Loading main scene");
                 sceneController.LoadMainScene();
-                this.winner = -1;
                 break;
             case GameState.End:
                 Debug.Log("Loading end scene");
@@ -102,34 +105,28 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Ensure scene is fully loaded before joining players
         if (scene.name == "JupiterMap")
         {
-            JoinPlayers();
+            AddPlayers();
         }
     }
 
-    private void JoinPlayers()
+    private void AddPlayers()
     {
-        GameObject player1 = Instantiate(playerPrefab, spawns[0].position, Quaternion.identity);
-        player1.GetComponent<PlayerController>().PlayerNumber = 1;
+        player1 = Instantiate(playerPrefab, spawns[0].position, Quaternion.identity);
+        player1.GetComponent<PlayerController>().PlayerID = 1;
 
-        // FIXME: Rotating player2 to face player1 will cause it to be behind the camera
-        GameObject player2 = Instantiate(playerPrefab, spawns[1].position, Quaternion.identity);
-        player2.GetComponent<PlayerController>().PlayerNumber = 2;
+        // Spawn player 2 at the second spawn point facing the opposite direction
+        player2 = Instantiate(playerPrefab, spawns[1].position, Quaternion.Euler(new Vector3(0, 180, 0)));
+        player2.GetComponent<PlayerController>().PlayerID = 2;
 
-        Debug.Log("Total players: " + PlayerInputManager.instance.playerCount);
+        // Flip player 2's camera so it's behind the player
+        GameObject player2Camera = player2.transform.Find("Player Camera").gameObject;
 
-        for (int i = 0; i < PlayerInputManager.instance.playerCount; i++)
-        {
-            PlayerInput playerInput = PlayerInput.GetPlayerByIndex(i);
-            string playerName = (i == 0) ? "Player 1" : "Player 2";
-            Debug.Log(playerName + " connected devices:");
+        Vector3 cameraPosition = player2Camera.transform.localPosition;
+        cameraPosition.z = -cameraPosition.z;
+        player2Camera.transform.localPosition = cameraPosition;
 
-            foreach (InputDevice device in playerInput.devices)
-            {
-                Debug.Log("- " + device);
-            }
-        }
+        this.winner = -1;
     }
 }
