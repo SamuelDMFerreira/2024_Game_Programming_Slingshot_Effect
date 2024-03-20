@@ -13,8 +13,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        playerID = GetComponent<PlayerController>().PlayerNumber;
+        playerID = GetComponent<PlayerController>().playerID;
         currentHealth = maxHealth;
+
+        Debug.Log("Player " + playerID + " has " + currentHealth + " health");
     }
 
     public void TakeDamage(float dmg)
@@ -29,11 +31,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         // If the player is hit by a projectile, take damage
@@ -41,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Projectile projectile = collision.gameObject.GetComponent<Projectile>();
 
+            // Got hit by an enemy projectile
             if (projectile.PlayerID != playerID)
             {
                 TakeDamage(projectile.Damage);

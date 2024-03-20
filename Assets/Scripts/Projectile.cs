@@ -5,23 +5,24 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField]
+    private float damage = 1.0f;
+
     private int playerID;
-    public float damage = 1.0f;
 
     public float Damage { get => damage; }
 
     public int PlayerID { get; set; }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (other.gameObject.GetComponent<PlayerController>().PlayerNumber != PlayerID)
+            if (collision.gameObject.GetComponent<PlayerController>().playerID != this.PlayerID)
             {
+                Debug.Log("Projectile hit player " + collision.gameObject.GetComponent<PlayerController>().playerID);
                 Destroy(this.gameObject);
             }
         }
-
-        Debug.Log(other);
     }
 }

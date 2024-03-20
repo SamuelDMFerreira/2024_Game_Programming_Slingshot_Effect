@@ -27,8 +27,8 @@ public class ProjectileController : MonoBehaviour
 
         Debug.Log("Launching projectile");
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.GetComponent<Projectile>().PlayerID = this.gameObject.GetComponent<PlayerController>().PlayerNumber;
-        // SoundManager.Instance.PlaySoundEffect("projectile");
+        projectile.GetComponent<Projectile>().PlayerID = this.gameObject.GetComponent<PlayerController>().playerID;
+        SoundManager.Instance.PlaySoundEffect("projectile");
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         GravitonallyAttracted ga = projectile.GetComponent<GravitonallyAttracted>();

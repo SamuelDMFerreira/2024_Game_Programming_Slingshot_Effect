@@ -122,10 +122,10 @@ GameObject:
   - component: {fileID: 2638318294104977110}
   - component: {fileID: 3644950151155283805}
   - component: {fileID: 777387759000364445}
+  - component: {fileID: 2003437246142276334}
   - component: {fileID: 5930872943985922959}
   - component: {fileID: 4538576732202881522}
   - component: {fileID: 340014038439647982}
-  - component: {fileID: 2003437246142276334}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87f3e7b121a5c74d8f55387cc4ce975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   moveSpeed: 10
   rotationSpeed: 50
   maxSpeed: 20
@@ -281,6 +282,19 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8340076701658009878, guid: 774a0d6cfae64b6408d57900a888f3fe, type: 3}
   launchForce: 3000
   lifetime: 5
+--- !u!114 &2003437246142276334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384000267414264852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd6a003f12f5fe46bcc97eb028ab967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 4
 --- !u!114 &5930872943985922959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,16 +402,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409520ec0bc105a42bc957aab626d484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2003437246142276334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384000267414264852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecd6a003f12f5fe46bcc97eb028ab967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 4

@@ -19,7 +19,14 @@ public class EndMenu : MonoBehaviour
 
     private void OnStateChange(GameState newState)
     {
-        
+        if (newState == GameState.End)
+        {
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void ToggleMenu()
