@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4969324349626798766}
   - component: {fileID: 6880070874787365494}
+  - component: {fileID: 8557359404306416328}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -50,7 +51,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchoredEdge: 0
+<<<<<<< Updated upstream
   testFill: 0
+=======
+  playerNumber: 0
+--- !u!222 &8557359404306416328
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4352542017176387332}
+  m_CullTransparentMesh: 1
+>>>>>>> Stashed changes
 --- !u!1 &6449654654851309056
 GameObject:
   m_ObjectHideFlags: 0

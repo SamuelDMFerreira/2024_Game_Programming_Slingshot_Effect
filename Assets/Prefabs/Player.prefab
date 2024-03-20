@@ -146,7 +146,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5955588917955039107}
+<<<<<<< Updated upstream
   - {fileID: 8704294098017518395}
+=======
+  - {fileID: 2932095065505332985}
+>>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7139419244254127859
@@ -156,7 +160,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6384000267414264852}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &3576984087116447082
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -389,7 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409520ec0bc105a42bc957aab626d484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 --- !u!1001 &2469868638642825557
+=======
+--- !u!1001 &2464951222671718291
+>>>>>>> Stashed changes
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -397,6 +405,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8153348935120008632}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: 5007388214843076448, guid: 37c2801b9de5c84479deb650da9c05fd, type: 3}
       propertyPath: m_Name
       value: Health
@@ -441,13 +450,79 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568308341263192273, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+      propertyPath: m_Name
+      value: Spaceship1
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: 37c2801b9de5c84479deb650da9c05fd, type: 3}
 --- !u!4 &8704294098017518395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6524978283261717102, guid: 37c2801b9de5c84479deb650da9c05fd, type: 3}
   m_PrefabInstance: {fileID: 2469868638642825557}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+--- !u!4 &2932095065505332985 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 758189127666354538, guid: 814165d4f7101be42b4fd513f67992bc, type: 3}
+  m_PrefabInstance: {fileID: 2464951222671718291}
+>>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
