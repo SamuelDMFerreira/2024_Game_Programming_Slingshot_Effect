@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd6a003f12f5fe46bcc97eb028ab967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimumDistanceThreshold: 80
   damageFactor: 0.05
   maxHealth: 4
 --- !u!114 &5930872943985922959

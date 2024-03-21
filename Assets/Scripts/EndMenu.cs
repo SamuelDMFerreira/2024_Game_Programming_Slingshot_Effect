@@ -19,16 +19,21 @@ public class EndMenu : MonoBehaviour
 
     private void OnStateChange(GameState newState)
     {
-
+        if (newState == GameState.End)
+        {
+            SoundManager.Instance.PlayMusicTrack("TitleTheme");
+        }
     }
 
     public void ToggleMenu()
     {
+        Debug.Log("Going back to menu...");
         GameManager.instance.UpdateState(GameState.Menu);
     }
 
     public void Quit()
     {
+        Debug.Log("Quitting Game...");
         Application.Quit();
     }
 }

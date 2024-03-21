@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField]
     private float damage = 1.0f;
-    private int playerID;
 
     public float Damage { get => damage; }
 
@@ -15,8 +14,10 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Check if the projectile hit a player
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Check if the projectile hit a player that is not the owner
             if (collision.gameObject.GetComponent<PlayerController>().PlayerID != this.PlayerID)
             {
                 Debug.Log("Projectile hit player " + collision.gameObject.GetComponent<PlayerController>().PlayerID);

@@ -58,7 +58,10 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-
+    /// <summary>
+    /// Event handler for when the player's health changes
+    /// </summary>
+    /// <param name="newState"> The new state to change to </param>
     public void UpdateState(GameState newState)
     {
         // If the new state is the same as the current state, do nothing
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
 
         this.currentState = newState;
 
+        // Loads the scene based on the new state
         switch (newState)
         {
             case GameState.Menu:
@@ -78,6 +82,7 @@ public class GameManager : MonoBehaviour
             case GameState.Play:
                 Debug.Log("Loading main scene");
                 sceneController.LoadMainScene();
+                SoundManager.Instance.PlayMusicTrack("TitleTheme");
                 break;
             case GameState.End:
                 Debug.Log("Loading end scene");
@@ -88,6 +93,12 @@ public class GameManager : MonoBehaviour
         OnStateChange?.Invoke(newState);
     }
 
+    /// <summary>
+    /// Event handler for when the player's health changes
+    /// </summary>
+    /// <param name="playerID"> Identifies which player </param>
+    /// <param name="currentHealth"> Current health of player </param>
+    /// <param name="maxHealth"> Max health of player </param>
     public void UpdateHealth(int playerID, float currentHealth, float maxHealth)
     {
         Debug.Log("Player " + playerID + " health: " + currentHealth + " / " + maxHealth);
@@ -111,6 +122,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Instantiates the players at the spawn points and sets the winner to -1
+    /// </summary>
     private void AddPlayers()
     {
         player1 = Instantiate(playerPrefab, spawns[0].position, Quaternion.identity);

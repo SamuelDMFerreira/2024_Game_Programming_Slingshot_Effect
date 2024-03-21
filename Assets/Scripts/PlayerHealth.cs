@@ -6,11 +6,15 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
+    private float minimumDistanceThreshold;
+    [SerializeField]
     private float damageFactor;
     [SerializeField]
     private float maxHealth;
     private float currentHealth;
     private int playerID;
+    private GameObject Jupiter;
+    private float orbitRadius;
 
     public float CurrentHealth { get => currentHealth; }
 
@@ -18,20 +22,25 @@ public class PlayerHealth : MonoBehaviour
     {
         playerID = GetComponent<PlayerController>().PlayerID;
         currentHealth = maxHealth;
+
+        Jupiter = GameObject.Find("Jupiter");
+        orbitRadius = Jupiter.GetComponent<OrbitController>().orbitRadius;
     }
 
     void Update()
     {
-        GameObject Jupiter = GameObject.Find("Jupiter");
-        float orbitRadius = Jupiter.GetComponent<OrbitController>().orbitRadius;
         float distance = Vector3.Distance(Jupiter.transform.position, transform.position);
 
-        if (distance <= orbitRadius && distance < 80.0f)
+        if (distance <= orbitRadius && distance < minimumDistanceThreshold)
         {
-            TakeOrbitDamage(distance, orbitRadius);
+            TakeOrbitDamage(distance);
         }
     }
 
+    /// <summary>
+    /// Takes damage from the player's health
+    /// </summary>
+    /// <param name="dmg"> Amount to take damage</param>
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
@@ -44,7 +53,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void TakeOrbitDamage(float distance, float orbitRadius)
+    /// <summary>
+    /// Calculate the damage the player takes based on the distance from Jupiter
+    /// </summary>
+    /// <param name="distance"> Distance from Jupiter </param>
+    private void TakeOrbitDamage(float distance)
     {
         // Calculate the damage multiplier based on the distance from Jupiter (the closer, the higher the damage)
         float distanceFactor = Mathf.Pow(1.0f - (distance / orbitRadius), 2.0f);
@@ -56,12 +69,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If the player is hit by a projectile, take damage
+        // Check if the player got hit by a projectile
         if (collision.gameObject.CompareTag("Projectile"))
         {
             Projectile projectile = collision.gameObject.GetComponent<Projectile>();
 
-            // Got hit by an enemy projectile
+            // Check if the projectile hit a player that is not the owner
             if (projectile.PlayerID != playerID)
             {
                 TakeDamage(projectile.Damage);
