@@ -376,7 +376,7 @@ MonoBehaviour:
     m_ActionId: 45f32774-dd6d-4945-bacb-0d83c71433da
     m_ActionName: gameplay/fire[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1127790236355832867}
