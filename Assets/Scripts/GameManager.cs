@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
 
     // EVENTS
     public static event Action<int, float, float> OnHealthChange;
-    public static event Action<GameState> OnStateChange;
 
     void Awake()
     {
@@ -82,15 +81,12 @@ public class GameManager : MonoBehaviour
             case GameState.Play:
                 Debug.Log("Loading main scene");
                 sceneController.LoadMainScene();
-                SoundManager.Instance.PlayMusicTrack("TitleTheme");
                 break;
             case GameState.End:
                 Debug.Log("Loading end scene");
                 sceneController.LoadEndScene();
                 break;
         }
-
-        OnStateChange?.Invoke(newState);
     }
 
     /// <summary>
@@ -118,6 +114,7 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "JupiterMap")
         {
+            SoundManager.Instance.PlayMusicTrack("ComputerRoom");
             AddPlayers();
         }
     }

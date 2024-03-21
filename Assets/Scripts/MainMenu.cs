@@ -4,22 +4,9 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    void Awake()
+    private void Start()
     {
-        GameManager.OnStateChange += OnStateChange;
-    }
-
-    void OnDestroy()
-    {
-        GameManager.OnStateChange -= OnStateChange;
-    }
-
-    private void OnStateChange(GameState newState)
-    {
-        if (newState == GameState.Menu)
-        {
-            SoundManager.Instance.PlayMusicTrack("TitleTheme");
-        }
+        SoundManager.Instance.PlayMusicTrack("TitleTheme");
     }
 
     public void PlayGame()

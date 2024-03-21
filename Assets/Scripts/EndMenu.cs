@@ -14,36 +14,27 @@ public class EndMenu : MonoBehaviour
         " turned around for a selfie",
     };
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        GameManager.OnStateChange += OnStateChange;
-    }
-
     void Start()
     {
+        SoundManager.Instance.PlayMusicTrack("TitleTheme");
+
         int winner = GameManager.instance.Winner;
         string victoryText = victoryTexts[Random.Range(0, victoryTexts.Count - 1)];
         endText.text = $"Player {winner}" + victoryText;
     }
 
-    void OnDestroy()
+    private void Update()
     {
-        GameManager.OnStateChange -= OnStateChange;
-    }
-
-    private void OnStateChange(GameState newState)
-    {
-        if (newState == GameState.End)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            SoundManager.Instance.PlayMusicTrack("TitleTheme");
+            RestartGame();
         }
     }
 
-    public void ToggleMenu()
+    public void RestartGame()
     {
-        Debug.Log("Going back to menu...");
-        GameManager.instance.UpdateState(GameState.Menu);
+        Debug.Log("Restarting game...");
+        GameManager.instance.UpdateState(GameState.Play);
     }
 
     public void Quit()
