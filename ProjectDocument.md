@@ -1,4 +1,4 @@
-# The title of your game #
+# Slingshot Effect #
 
 ## Summary ##
 
