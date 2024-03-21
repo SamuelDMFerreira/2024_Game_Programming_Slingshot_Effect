@@ -25,7 +25,7 @@ public class EndMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.anyKey)
         {
             RestartGame();
         }
