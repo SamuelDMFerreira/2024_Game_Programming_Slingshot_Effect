@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class EndMenu : MonoBehaviour
 {
+    [SerializeField] private TMP_Text endText;
 
     // Start is called before the first frame update
     void Awake()
     {
         GameManager.OnStateChange += OnStateChange;
+    }
+
+    void Start()
+    {
     }
 
     void OnDestroy()
