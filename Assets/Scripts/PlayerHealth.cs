@@ -79,6 +79,26 @@ public class PlayerHealth : MonoBehaviour
             {
                 TakeDamage(projectile.Damage);
             }
+            else 
+            {
+                Collider col = this.GetComponent<Collider>();
+                if (col != null)
+                {
+                    col.enabled = false;
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            Collider col = this.GetComponent<Collider>();
+            if (col != null)
+            {
+                col.enabled = true;
+            }
         }
     }
 }
