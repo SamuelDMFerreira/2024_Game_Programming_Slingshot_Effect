@@ -6,7 +6,7 @@ In Slingshot Effect two players take control of warship as their must fight to t
 
 ## Project Resources
 
-[Web-playable version of your game.](https://itch.io/)  
+[Web-playable version of your game.](https://samueldmferreira.itch.io/s)  
 [Trailor](https://youtu.be/Z78cWUokqOM)  
 [Press Kit](https://dopresskit.com/)  
 [Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1qwWCpMwKJGOLQ-rRJt8G8zisCa2XHFhv6zSWars0eWM/edit?usp=sharing)  
