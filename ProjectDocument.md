@@ -122,6 +122,7 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
     
    - Player system:
        - [AddPlayers()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L125-L141) function initializes two players at predefined spawn points upon entering the gameplay scene. It assigns unique player IDs to each instantiated player and resets the ID stored in winner.
+       - Originally, the players were initialized in the scene. When the scene loaded, the Player Input Manager would add the players to the input system randomly, which resulted in player1 sometimes in screen 1 and sometimes in screen 2. This was an issue because the health bar for player1 was anchored on the left and the health bar for player2 was anchored on the right. To fix this, I changed the join players behavior of the player input manager to "Join Manually" instead. In the game manager, I initialized the first player which meant player 1 would always be on screen 0 and player 2 would always be on screen 1.
     
    - Health system:
        - [UpdateHealth()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L98-L111) is an event that takes in 3 parameters: playerID, currentHealth, and maxHealth. It logs the current health of the player and invokes an event to notify other components of the health change. Additionally, it checks if the player's health has reached zero and determines the winner accordingly and updates the game state with UpdateState(GameState.Won).
@@ -135,7 +136,9 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
 
   - The players can take damage in two cases:
       1. Collision from an enemy projectile
-      2. The player's proximity to a planet
+         - It checks the playerID field of the projectile to correctly register if it was an enemy attack.
+         - Initially, the projectile would bounce off the player and it wouldn't register as a collision. I removed Health as a game object and added it as a component to Player instead.
+      3. The player's proximity to a planet
          - In [Update()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/PlayerHealth.cs#L34), the player continously takes damage until they are no longer within the minimum distance threshold.
          - In [TakeOrbitDamage(float distance)](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/PlayerHealth.cs#L60-L67), the damage taken is determined by a distance and damage factor:
              - As the player gets closer to the planet, it takes more damage. The distance factor is calculated by (1 - distance/orbitRadius)^2. 
@@ -147,7 +150,7 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
   - I also added the UI component in Jupiter scene. However, I'm not sure why but the healthbar UI canvas isn't displayed the same way on every device. 
 
   *Projectile Controller*: I added a projectile script to the projectile prefab. The projectile has a damage field and playerID to track where the projectile is coming from. If the [projectile collides](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/8ec978729985d846fc5b1f46736a594614b1f2b3/Assets/Scripts/Projectile.cs#L15-L27) with the other player, then it destroys itself.
-
+  - Initially, the projectile collides with the player (that it launches from) first, then Jupiter, then the other player. So first, I checked that the projectile collided with a player first and then I checked the playerID to make sure that it was different from the player that the projectile was launched from. If it's different, it destroys itself.
 # Sub-Roles
 
 ## Audio
