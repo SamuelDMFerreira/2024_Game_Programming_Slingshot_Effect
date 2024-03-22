@@ -201,16 +201,17 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
             
            - Ex: If a player clicks the Start button in the main menu, it'll call the GameManager.instance.UpdateState(GameStates.Play) to load the game play scene.
        - The GameManager also subscribes to [SceneManagement.sceneLoaded](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L113-L120) to make sure scenes are fully loaded before instantiating any objects.
+       -  This would solve the problem of players not showing up in the game scene even though GameManager initialized them.
     
    - Player system:
        - [AddPlayers()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L125-L141) function initializes two players at predefined spawn points upon entering the gameplay scene. It assigns unique player IDs to each instantiated player and resets the ID stored in winner.
-       - Originally, the players were initialized in the scene. When the scene loaded, the Player Input Manager would add the players to the input system randomly, which resulted in player1 sometimes in screen 1 and sometimes in screen 2. This was an issue because the health bar for player1 was anchored on the left and the health bar for player2 was anchored on the right. To fix this, I changed the join players behavior of the player input manager to "Join Manually" instead. In the game manager, I initialized the first player which meant player 1 would always be on screen 0 and player 2 would always be on screen 1.
+       - In the first implementation, the players were initialized in the scene. When the scene loaded, the Player Input Manager would add the players to the input system randomly, which resulted in player1 sometimes in screen 1 and sometimes in screen 2. This was an issue because the health bar for player1 was anchored on the left and the health bar for player2 was anchored on the right. To fix this, I changed the join players behavior of the player input manager to "Join Manually" instead. In the game manager, I initialized the first player which meant player 1 would always be on screen 0 and player 2 would always be on screen 1.
     
    - Health system:
        - [UpdateHealth()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L98-L111) is an event that takes in 3 parameters: playerID, currentHealth, and maxHealth. It logs the current health of the player and invokes an event to notify other components of the health change. Additionally, it checks if the player's health has reached zero and determines the winner accordingly and updates the game state with UpdateState(GameState.Won).
     
    - Sound system:
-       - The GameManager calls the SoundManager's public method PlayMusicTrack to play audio based on the state and scene.
+       - I worked with the sound lead to call the SoundManager's public method PlayMusicTrack to play audio based on the state and scene.
 
   *Player Health*: The player health manages the health of a player character in the game. It has a playerID field to identify the player that it manages. 
   
@@ -220,7 +221,7 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
       1. Collision from an enemy projectile
          - It checks the playerID field of the projectile to correctly register if it was an enemy attack.
          - Initially, the projectile would bounce off the player and it wouldn't register as a collision. I removed Health as a game object and added it as a component to Player instead.
-      3. The player's proximity to a planet
+      2. The player's proximity to a planet
          - In [Update()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/PlayerHealth.cs#L34), the player continously takes damage until they are no longer within the minimum distance threshold.
          - In [TakeOrbitDamage(float distance)](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/PlayerHealth.cs#L60-L67), the damage taken is determined by a distance and damage factor:
              - As the player gets closer to the planet, it takes more damage. The distance factor is calculated by (1 - distance/orbitRadius)^2. 
