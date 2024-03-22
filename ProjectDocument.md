@@ -56,6 +56,88 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Add an entry for each platform or input style your project supports.**
 
+There are three scenes in our game: *Start*, *JupiterMap* (which is the
+main game), and *GameOver*. For each of these scenes, I set up the UI
+and input.
+
+### Implementation
+
+I used Unity's default Canvas UI system for most of the UI, and the
+InputSystem package for handling input for both gameplay and menus.
+
+InputSystem works by creating asset files called InputActionAssets,
+which sets up actions and bindings for the game. These actions are
+grouped together into action maps to be enabled/disabled as needed.
+
+### Menu Scenes
+
+*Start* and *GameOver* are menu scenes: Basically a welcome/victory text
+with some buttons.
+
+For integration, I connected methods from interfaces made by teammates
+(mostly game state updates from Game Logic) to the appropriate UI
+element. *GameOver* also requested for the game's winner and displayed
+the appropriate victory message.
+
+For aesthetics, I imported assets from the Unity Asset Store
+and grabbed some fonts online to make things look nicer.
+
+For input, I primarily used two styles of UI input: pointer and
+navigation.
+* **Pointer-based input** is used with a **mouse**, where the player can point
+  to a button and click to interact; It is the defaultly-supported
+  method.
+* **Navigation-based input** is used with a **keyboard** or **gamepad**,
+  where the user can select buttons by using keys/buttons (such as wasd)
+  and confirm with another button (like enter). This decision is made by
+  the project manager to support two-controller gameplay.
+
+The bindings for these controls are all provided in a default
+InputActionAsset on the action map *UI*, which is then binded to the
+*Input System UI Input Module* EventSystems. Navigation-based input is
+set up by the appropriate property on the UI module.
+
+### JupiterMap
+
+The main game scene, *JupiterMap*, uses a split-screen UI, each with the
+appropriate camera and healthbar.
+
+For input, two control schemes are supported --- **keyboard and mouse**
+and **gamepad**. The control schemes for each player are detected
+automatically when the first input is received. The following is the
+bindings for each control scheme:
+
+* **Keyboard and mouse**
+    * Thrust: W
+    * Turn: AD
+    * Boost: Space
+    * Fire: Left mouse button
+    * Camera: Mouse
+* **Gamepad**
+    * Thrust/Turn: Left thumbstick
+    * Boost: Trigger
+    * Fire: A
+    * Camera: Right thumbstick
+
+The implementation of both the UI and the input relies on component
+`PlayerInput` and component `PlayerInputManager`. The first is a
+component attached to the player prefab that sends input signals, the
+second is a singleton that assigns appropriate input devices to the
+player. An input cycle would look something like the following:
+
+1. Upon first input, `PlayerInputManager` assigns appropriate input
+   device to each player
+2. `PlayerInput` detects an input from the device, matches it with a
+   signal in a defined action map, and sends out the signal
+   to the game object (such as `OnThrust`)
+3. `PlayerInputListner.cs` listens to the signal and calls the
+   appropriate controller.
+
+The split-screen UI is also handled by `PlayerInputManager` and
+`PlyaerInput`; A camera is attached to each player's `PlayerInput`,
+which gets set up appropriately by `PlayerInputManager`.
+
+
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
