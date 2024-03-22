@@ -64,7 +64,41 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **List your assets, including their sources and licenses.**
 
+Spaceship Assets
+Source: Unity Asset Store
+Modifications: Color adjustments and resizing to fit game aesthetic
+License: [https://assetstore.unity.com/packages/3d/vehicles/space/hi-rez-spaceships-creator-free-sample-153363]
+
+Particle Effects
+Components:
+Space Dust
+Engine Fire
+Trail Renderer (aligned with spaceship direction)
+Creation: Custom-made using Unity's particle system
+
+Planetary Background Materials
+Planets: Jupiter and its moon Io and 4 other planest on background
+Source: [https://polyhaven.com/textures/rock]
+[https://www.deviantart.com/fargetanik/art/Jupiter-True-Color-Texture-Map-Cassini-676015657]
+[https://www.deviantart.com/fargetanik/art/Io-Truecolor-Texture-Map-8k-708688293]
+
+Process: Converted pictures into materials for 3D rendering. I have downloaded rock textures from this website to implement textures on 4 background planets. 
+Pictures for jupiter and Io are downloaded from the last two websites. 
+
+SkyBox backgrounds
+Source: [https://assetstore.unity.com/packages/2d/textures-materials/sky/spaceskies-free-80503]
+
+I have implemented backgrounds based on this file I downloaded from Unity. Originally I had three different backgrounds: purple, pink and green. Since it was difficult to choose one, I originally made SkyboxSetter.cs to handle list of background files and let us choose drag the backgrounds in and choose one. However, at this stage of gamem, I found it unnecessary and ended up choosing pink backgrounds, setting it as a single, default background. This is my original branch that has the function and different backgrounds. [https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/tree/hk_animations]
+
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+
+Our game's visual and animation efforts are closely tied to enhancing the overall "game feel" - that intuitive sense of immersion, responsiveness, and satisfaction players get as they interact with the game environment. Through careful design and integration of visual assets, we aim to create a seamless and compelling experience that not only looks good but feels right.
+
+Spaceship Design and Particle Effects
+The custom modifications and particle effects added to the spaceship assets from Unity are designed to give players a tangible sense of speed and movement through space. The visual feedback from the engine fire and space dust contributes to a dynamic game feel, where players can feel the thrust and maneuverability of their spacecraft. Although it was not used eventually, I have also implemented second spaceship that looked different from the first one. This was in case we chose to use it for the second player. Just like the first one, I have also implemented particle effects such as engine fire and space dust. Also the spaceship would have trail renderer and pointlight and was modified in colors to differentiate from the frist one. 
+
+Planetary Materials and Backgrounds
+The materials created for Jupiter, Io and 4 other planets on the background serve multiple purposes. They not only contribute to the game's graphic design by providing a visually rich backdrop but also play a crucial role in world-building. By rendering these celestial bodies with detailed textures, we create a more immersive and believable universe for players to explore. This attention to detail helps ground the gameplay in a visually consistent and engaging setting.
 
 ## Game Logic
 
