@@ -100,9 +100,52 @@ The custom modifications and particle effects added to the spaceship assets from
 Planetary Materials and Backgrounds
 The materials created for Jupiter, Io and 4 other planets on the background serve multiple purposes. They not only contribute to the game's graphic design by providing a visually rich backdrop but also play a crucial role in world-building. By rendering these celestial bodies with detailed textures, we create a more immersive and believable universe for players to explore. This attention to detail helps ground the gameplay in a visually consistent and engaging setting.
 
-## Game Logic
+## Game Logic (Oscar Wang)
 
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
+
+  *Game Manager*: The game manager manages the game flow including scene transition, player instantiation, health management, and event handling. 
+1. Architecture
+   - It uses the singleton pattern to ensure that only one instance of the Game Manager exists throughout the game. It can be accessed through GameManager.instance.
+   - The game states are stored as enums ( menu, play, end ). The GameManager uses a simple FSM to manage between each states.
+   - It uses events to implement the observer pattern for player health changes, allowing decoupled communication between components.
+  
+2. Interactions
+   - State management:
+       - The state of the game is changed with the public method [UpdateState(GameState newState)](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L64-L90). It uses SceneController's public methods to handle loading scenes.
+           - I worked with the UI lead to ensure that the buttons in menus use Unity Events to trigger game state changes.
+            <img width="313" alt="image" src="https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/assets/122497797/c844833a-23e5-4607-9845-c4d825f707f1">
+            
+           - Ex: If a player clicks the Start button in the main menu, it'll call the GameManager.instance.UpdateState(GameStates.Play) to load the game play scene.
+       - The GameManager also subscribes to [SceneManagement.sceneLoaded](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L113-L120) to make sure scenes are fully loaded before instantiating any objects.
+    
+   - Player system:
+       - [AddPlayers()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L125-L141) function initializes two players at predefined spawn points upon entering the gameplay scene. It assigns unique player IDs to each instantiated player and resets the ID stored in winner.
+    
+   - Health system:
+       - [UpdateHealth()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L98-L111) is an event that takes in 3 parameters: playerID, currentHealth, and maxHealth. It logs the current health of the player and invokes an event to notify other components of the health change. Additionally, it checks if the player's health has reached zero and determines the winner accordingly and updates the game state with UpdateState(GameState.Won).
+    
+   - Sound system:
+       - The GameManager calls the SoundManager's public method PlayMusicTrack to play audio based on the state and scene.
+
+  *Player Health*: The player health manages the health of a player character in the game. It has a playerID field to identify the player that it manages. 
+  
+  - [TakeDamage(float dmg)](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/PlayerHealth.cs#L44-L54) is in charge of updating a player's health changes and notifying GameManager of health changes. It destroys the player object if the currentHealth passed in is less than 0. 
+
+  - The players can take damage in two cases:
+      1. Collision from an enemy projectile
+      2. The player's proximity to a planet
+         - In [Update()](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/PlayerHealth.cs#L34), the player continously takes damage until they are no longer within the minimum distance threshold.
+         - In [TakeOrbitDamage(float distance)](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/PlayerHealth.cs#L60-L67), the damage taken is determined by a distance and damage factor:
+             - As the player gets closer to the planet, it takes more damage. The distance factor is calculated by (1 - distance/orbitRadius)^2. 
+             - The damage factor is a constant value.
+          
+  - In the HealthBarController, I subscribed a [HandleHealthChange(int playerID, float currentHealth, float maxHealth)](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/8ec978729985d846fc5b1f46736a594614b1f2b3/Assets/Scripts/HealthBarController.cs#L70-L78) method to GameManager.instance.OnHealthChange event. 
+      - It takes in 3 parameters: playerID, currentHealth, and maxHealth. The playerID needs to match the playerNumber associated with the health bar controller, which ensures that the health bar is only updated for the relevant player.
+      - When the player dies, the health bar controller stops listening to health changes.
+  - I also added the UI component in Jupiter scene. However, I'm not sure why but the healthbar UI canvas isn't displayed the same way on every device. 
+
+  *Projectile Controller*: I added a projectile script to the projectile prefab. The projectile has a damage field and playerID to track where the projectile is coming from. If the [projectile collides](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/8ec978729985d846fc5b1f46736a594614b1f2b3/Assets/Scripts/Projectile.cs#L15-L27) with the other player, then it destroys itself.
 
 # Sub-Roles
 
