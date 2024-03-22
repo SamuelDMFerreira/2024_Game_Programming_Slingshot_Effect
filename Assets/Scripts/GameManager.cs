@@ -117,6 +117,9 @@ public class GameManager : MonoBehaviour
             SoundManager.Instance.PlayMusicTrack("ComputerRoom");
             AddPlayers();
         }
+        if (scene.name == "GameOver")
+        {
+        }
     }
 
     /// <summary>
