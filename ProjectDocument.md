@@ -158,11 +158,31 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
 
 **Document the sound style.** 
 
-## Gameplay Testing
+## Gameplay Testing (Oscar Wang)
 
 **Add a link to the full results of your gameplay tests.**
+- I created a gameplay testing form for feedbacks: https://forms.gle/FpLQKReLzBMNDwfH6
 
 **Summarize the key findings from your gameplay tests.**
+- Here are the responses: https://docs.google.com/spreadsheets/d/1MpOYVXkkzlN3I8P5FfQNhvkWEF_dqfsh2nV8ppioFZ0/edit?usp=sharing
+
+- When asked about the overall enjoyment of the game and their personal opinion of the graphics, movements, and sound, most responders had a positive reaction to those components.
+
+**1. "What was the objective of the game?"**
+  It was fairly easy for players to understand the objective of the game. This means that our game succeeded in identifying a clear objective for the game.
+   
+**2. "What was your strategy for winning the game?"**
+  The general pattern was spamming and shooting randomly. While this was a feature of our game, we wanted players to take advantage of the gravity system to gain the upper hand in this combat system. I believe we should make effects of the gravity system on our projectile more apparent.
+   
+**3. "What did you like most about the game?"**
+  Most players enjoyed the visuals of the game and how the environment played a factor in the combat system. Based on this feedback, we can conclude that our game designs are heading in the right direction. In the future, I believe we should work on building the environment, like making the moon bigger and adding other planets.
+   
+**4. "What did you like least about the game?"**
+  Players disliked the lack of control over steering and viewpoint adjustment with controllers, found the camera unresponsive compared to mouse controls, expressed confusion over gameplay mechanics and button functions, and felt uncertain about winning conditions, with concerns about potential loss after multiple attacks within a short timeframe. 
+   
+**5. "Did you encounter any difficulties or frustrations while trying to navigate through the star system? Were the controls responsive and accurate during combat situations?"**
+  Most people found it difficult to orient the ships and track the other player. Controls were not accurate for steering and viewing other players, particularly when using a game controller compared to a mouse. To fix these issues, I think we can add UI components to explain our game mechanic during the gameplay scene or a "How to play" tutorial. 
+
 
 ## Narrative Design
 
