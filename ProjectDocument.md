@@ -181,6 +181,9 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
    - The game states are stored as enums ( menu, play, end ). The GameManager uses a simple FSM to manage between each states.
    - It uses events to implement the observer pattern for player health changes, allowing decoupled communication between components.
   
+    <img width="424" alt="image" src="https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/assets/122497797/7e713707-edf3-44a1-b2c4-b3eb37b126dc">
+
+  
 2. Interactions
    - State management:
        - The state of the game is changed with the public method [UpdateState(GameState newState)](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/6a1ac0aa94ac47e06293623e1a71a3e0aaf3677c/Assets/Scripts/GameManager.cs#L64-L90). It uses SceneController's public methods to handle loading scenes.
@@ -249,7 +252,7 @@ For the sound effects it was hard to decide on them without first seeing the ani
 **Summarize the key findings from your gameplay tests.**
 - Here are the responses: https://docs.google.com/spreadsheets/d/1MpOYVXkkzlN3I8P5FfQNhvkWEF_dqfsh2nV8ppioFZ0/edit?usp=sharing
 
-- When asked about the overall enjoyment of the game and their personal opinion of the graphics, movements, and sound, most responders had a positive reaction to those components.
+When asked about the overall enjoyment of the game and their personal opinion of the graphics, movements, and sound, most responders had a positive reaction to those components.
 
 **1. "What was the objective of the game?"**
   It was fairly easy for players to understand the objective of the game. This means that our game succeeded in identifying a clear objective for the game.
