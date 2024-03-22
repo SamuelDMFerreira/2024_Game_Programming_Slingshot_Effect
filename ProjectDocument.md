@@ -152,11 +152,20 @@ The materials created for Jupiter, Io and 4 other planets on the background serv
 
 ## Audio
 
-**List your assets, including their sources and licenses.**
 
-**Describe the implementation of your audio system.**
 
-**Document the sound style.** 
+### Assets & Sources
+- **Projectile Hit**: By unfa on [freesound.org](https://freesound.org/s/193429/) (CC0).
+- **Outer Space Ambient**: From [Pixabay](https://pixabay.com/sound-effects/outer-space-54040/), royalty-free.
+- **Computer Room Ambience**: Available on [Soundsnap](https://www.soundsnap.com/search/audio?query=computer+room+08).
+- **Nitro Activation**: By strexet on [freesound.org](https://freesound.org/s/404333/) (CC0).
+- **Misc SFX**: Via [Pixabay Music]([https://pixabay.com/music/search/effect/](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=66630)).
+### Implementation 
+We followed The Captain's sound manager implementation for our game. I added a singleton pattern and made the sound manager into a prefab. Instructions on how to use it can be found here [SoundManager](https://docs.google.com/document/d/1YIBGEjZ8uCD-QcJbcroU-K9DsLJg6h3xlFogyJoXux8/edit).
+### Sound Style
+For the sound style I wanted to go for something immersive. For the Start screen I went with this [OuterSpace](https://pixabay.com/sound-effects/outer-space-54040/). When the game started I didn't want to have music playing in the background since it might be tiring. So I went with a spaceship engine background noise with some computer sounds [ComputerRoom](https://www.soundsnap.com/search/audio?query=computer+room+08).
+
+For the sound effects it was hard to decide on them without first seeing the animations. After testing many projectile sounds I felt like the far away cannon would simulate a projectile in space best [Cannon]([https://pixabay.com/music/search/effect/](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=66630)). For the thrust I decided a car nitro activation would be a good choice [freesound.org](https://freesound.org/s/404333/). I wanted the player to know if they got hit or hit the other player without it being to noticible [freesound.org](https://freesound.org/s/193429/). 
 
 ## Gameplay Testing (Oscar Wang)
 
