@@ -9,7 +9,7 @@ In Slingshot Effect two players take control of warship as their must fight to t
 [Web-playable version of your game.](https://samueldmferreira.itch.io/s)  
 [Trailor](https://youtu.be/Z78cWUokqOM)  
 [Press Kit](https://docs.google.com/document/d/1NSICeHhKpue8uKQ8BCmSUHAsMaJLLcVglJPFWx_Bt24/edit)  
-[Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1qwWCpMwKJGOLQ-rRJt8G8zisCa2XHFhv6zSWars0eWM/edit?usp=sharing)  
+[Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1Q5guYiO31t-bBYlx2Gqi2XuQB52R1sa88JVZY_6hfn0/edit?usp=sharing)  
 
 ## Gameplay Explanation ##
 
@@ -308,7 +308,3 @@ Multiplayer Gameplay Example: A scene from actual gameplay was included to give 
 *Adjustments to Movement System* - I adjusted player's [angular drag](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/9fdeadffbf27e8d4bdf2e6e610ee130ba6293cd4/Assets/Prefabs/Player.prefab#L235) to prevent players from being lost in space and make them more quickly get attracted by Jupiters gravity.
 
 *Debugging Player Collision with Own Projectiles* - Players colliding with their own projectile was in issue we had because we want to use unity force system to enact gravity on projectile but this would turn off if their became triggers. I tried [disabling projectile collision](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/cbb55a455b0b60e954fca60644456af31fe92225/Assets/Scripts/PlayerHealth.cs#L82) when they enter if their from the player, but this didn't solve the issue. So I increased the [linear drag](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/blob/9fdeadffbf27e8d4bdf2e6e610ee130ba6293cd4/Assets/Prefabs/Player.prefab#L234) to mitigate the problem of ships proejectile rotating due to colliding with their own projectiles. *This project made me really annoyed at unity's physics system*.  
-  
-
-- 
-**Document what you added to and how you tweaked your game to improve its game feel.**
