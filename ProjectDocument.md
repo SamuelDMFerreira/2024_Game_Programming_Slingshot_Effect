@@ -8,7 +8,7 @@ In Slingshot Effect two players take control of warship as their must fight to t
 
 [Web-playable version of your game.](https://samueldmferreira.itch.io/s)  
 [Trailor](https://youtu.be/Z78cWUokqOM)  
-[Press Kit](https://dopresskit.com/)  
+[Press Kit](https://docs.google.com/document/d/1NSICeHhKpue8uKQ8BCmSUHAsMaJLLcVglJPFWx_Bt24/edit)  
 [Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1qwWCpMwKJGOLQ-rRJt8G8zisCa2XHFhv6zSWars0eWM/edit?usp=sharing)  
 
 ## Gameplay Explanation ##
@@ -276,8 +276,26 @@ Since the game is simple duel in space with a bit of chaos as people are draggee
 ## Press Kit and Trailer
 
 [Trailor](https://youtu.be/Z78cWUokqOM)  
+[Press Kit](https://docs.google.com/document/d/1NSICeHhKpue8uKQ8BCmSUHAsMaJLLcVglJPFWx_Bt24/edit)  
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
+
+In showcasing our game, the selection of visual content for both the trailer and the screenshots was guided by a strategic desire to capture and convey the essence of the gameplay, the unique setting, and the dynamic combat system. The emphasis was on providing potential players and the press with a vivid glimpse into the game's core experiences, aesthetics, and the innovative features that set it apart.
+
+Trailer Selection
+For the trailer, we focused on three key elements: the spaceship flying, its projectile attacks, and a cinematic camera movement around the spaceship. These were chosen to:
+
+Demonstrate Gameplay Dynamics: Showcasing the spaceship in flight and in combat provides a clear sense of the game's mechanics and the fluidity of control players can expect.
+Highlight Combat: Featuring projectile attacks in the trailer was crucial to highlight the game's combat system, illustrating the intensity and strategic depth of space battles.
+Visual Showcase: The cinematic camera movements around the spaceship were designed to give viewers a detailed look at the spacecraft's design, emphasizing the game's high-quality graphics and attention to detail.
+These elements combined to create a trailer that not only entices with its visual appeal but also informs viewers about the game's key gameplay features.
+
+Screenshot Selection
+The screenshots were carefully chosen to represent the breadth and depth of the game experience:
+
+Jupiter Map: A screenshot of the Jupiter map was selected to showcase the game's setting, highlighting the stunning visuals and the unique challenges posed by the planet's gravitational forces.
+Front-side Shot of the Spaceship: This image was chosen to allow potential players to appreciate the design and detail of the spaceships they will pilot, emphasizing customization and the variety of ships available.
+Multiplayer Gameplay Example: A scene from actual gameplay was included to give a taste of the multiplayer aspect, demonstrating how players interact with one another in the vastness of space.
 
 ## Game Feel and Polish
 
