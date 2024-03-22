@@ -818,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 188424330}
     - target: {fileID: 747260674516741376, guid: a90dffcc5cd2d0f70ab27180d3963438, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleMenu
+      value: RestartGame
       objectReference: {fileID: 0}
     - target: {fileID: 747260674516741376, guid: a90dffcc5cd2d0f70ab27180d3963438, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
