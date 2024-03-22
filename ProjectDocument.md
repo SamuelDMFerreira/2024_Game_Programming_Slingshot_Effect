@@ -49,7 +49,7 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 *Communication* - I created a discord server for our group which we used as our main form of communcation. Though this we were able to arrange a regular physical meeting time of thursdays from 10:30 to 11:30 AM which we could use as sprint meetings. We also schedule two last emergency meetings at 10:30 sunday and 1:30 tuesday the same way. I was also responsible forcontacting both the GP survivor and Hell Punch groups to preform progress reports. For the Hell Punch progress report I create a second discord server to contact them. (Inspired by what GP survivor did for our meeting).    
 
-## User Interface and Input
+## User Interface and Input (Eric Xu)
 
 **Describe your user interface and how it relates to gameplay. This can be done via the template.**
 **Describe the default input configuration.**
@@ -106,18 +106,6 @@ For input, two control schemes are supported --- **keyboard and mouse**
 and **gamepad**. The control schemes for each player are detected
 automatically when the first input is received. The following is the
 bindings for each control scheme:
-
-* **Keyboard and mouse**
-    * Thrust: W
-    * Turn: AD
-    * Boost: Space
-    * Fire: Left mouse button
-    * Camera: Mouse
-* **Gamepad**
-    * Thrust/Turn: Left thumbstick
-    * Boost: Trigger
-    * Fire: A
-    * Camera: Right thumbstick
 
 The implementation of both the UI and the input relies on component
 `PlayerInput` and component `PlayerInputManager`. The first is a
@@ -279,9 +267,11 @@ For the sound effects it was hard to decide on them without first seeing the ani
   Most people found it difficult to orient the ships and track the other player. Controls were not accurate for steering and viewing other players, particularly when using a game controller compared to a mouse. To fix these issues, I think we can add UI components to explain our game mechanic during the gameplay scene or a "How to play" tutorial. 
 
 
-## Narrative Design
+## Narrative Design (Eric Xu)
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+
+Since the game is simple duel in space with a bit of chaos as people are draggeed into space, I focused on humor instead of narrative complexity. I added a bunch of random victory messages at the very end when people win so that every victory is a bit more interesting.
 
 ## Press Kit and Trailer
 
