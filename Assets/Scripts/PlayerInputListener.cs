@@ -27,7 +27,13 @@ public class PlayerInputListener : MonoBehaviour
         playerCtrl = GetComponent<PlayerController>();
         bulletCtrl = GetComponent<ProjectileController>();
 
+        // Lock cursor for camera
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void OnDestroy()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame

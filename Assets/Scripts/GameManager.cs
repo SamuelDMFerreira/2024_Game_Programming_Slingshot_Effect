@@ -120,6 +120,9 @@ public class GameManager : MonoBehaviour
         {
             AddPlayers();
         }
+        if (scene.name == "GameOver")
+        {
+        }
     }
 
     /// <summary>
