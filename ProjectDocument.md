@@ -2,7 +2,7 @@
 
 ## Summary ##
 
-**A paragraph-length pitch for your game.**
+In Slingshot Effect two players take control of warship as their must fight to the death. Each player is equipped with the ability to fire gravitionally effected projectile and must maneavuer around the gravity of Jupiter in order to get the perfect shot and win the game. 
 
 ## Project Resources
 
@@ -13,18 +13,16 @@
 
 ## Gameplay Explanation ##
 
-In Slingshot Effect two players each take control of a warship and fight to the death within the orbit of jupiter. Each player is equipped with the ability to fire gravitional effect projectiles and have to take advantage of the planets gravity to hit the other player.
+The game works by spawning two player on opposite sides of Jupiter. Both start with the same limited amount of health, but must kill each other. Each player has a small selection of manuevers that their are able to pull off. 
+- Use left thumbstick to turn ship by turning left or right. This form of turning is slow and limited.
+- holding left thumbstick up moves the ship forward slowly and again is limited. 
+- Use thumpers to activate thrust which accelerates the ship forward quickly. Thrust has a cool down and is locked to a maximum speed. 
+- Use right thumbstick to rotate camera. Which gives you more view of the other players. 
+- Use A button to fire projectiles. Projectiles are travel much fasting than the ship and able to damage the other player. however their also effected by gravity and can be bent.
 
-Each player has a small selection of manuevers.
-- Use left thumbstick to turn ship and move forward at slow speed. 
-- Use thumpers to acelerate player quickly.
-- Use right thumbstick to rotate camera.
-- Use B button to fire projectiles.
+The projectile and players are attracted by Jupiters gravity. If you fall into Jupiter, you will start taking damage inside Jupiter. This makes it dangerous to be inside but could alsoprovide useful game tatic if you try hiding from the other player. 
 
-The projectile and players are attracted by Jupiters gravity. Be carefull not to fall into the planet or else you will start taking damage.
-A player wins if the other player's health is reduced to zero. 
-
-**Add it here if you did work that should be factored into your grade but does not fit easily into the proscribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
+A player wins if the other player's health is reduced to zero, either by getting hit by projectiles or staying in Jupiter to long. 
 
 # Main Roles #
 
@@ -43,15 +41,13 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-- in charge of merge git pull requests
-- used git project https://github.com/users/SamuelDMFerreira/projects/4 and git issues https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/issues
-- set up google drive https://drive.google.com/drive/folders/0AItSErCiyZ-TUk9PVA
-- made reference gameplay one page design document that team can work off of https://www.figma.com/file/LSABP4OMuUX36TnWPdPD8U/Slingshot-Effect-One-Page-Design-Doc?type=design&node-id=0-1&mode=design
-- contacted both GP survivor and Hell Punch group to intial report and review processes. 
-- Made groups discord server 
-- made hell punch / slingshot server, inspired by survivor made by GP surivor for are meeting with them
-- arranged sprint meetings on thursdays 10:30 - 11:30 AM. Used when to meet 
-- arranged last two group meetings on sunday 10:30 and tuesday 1:30 
+*Git Organization* - I was in charge of merging pull requests into main. This involved going into other member's branch on my local repo, to test their changes in unity. I would then merge or close pull request, if their changes were transferable. To track our project progress I also set up a [github project](https://github.com/users/SamuelDMFerreira/projects/4) andcreated [github issue](https://github.com/SamuelDMFerreira/2024_Game_Programming_Slingshot_Effect/issues) pretaining to the work that each person in the group had to preform.    
+
+*Game Design and Design Documentation* - I initial wrote the core gameplay system in the project plan and collabrated with the other group members to refine them. I than created a one [page design document](https://www.figma.com/file/LSABP4OMuUX36TnWPdPD8U/Slingshot-Effect-One-Page-Design-Doc?type=design&node-id=0-1&mode=design) avalible for the team, so we could have a design reference for gameplay.  
+
+*Document Organization* - I created a [shared google drive](https://drive.google.com/drive/folders/0AItSErCiyZ-TUk9PVA) so that our group members could store code document, design documents, and research.  
+
+*Communication* - I created a discord server for our group which we used as our main form of communcation. Though this we were able to arrange a regular physical meeting time of thursdays from 10:30 to 11:30 AM which we could use as sprint meetings. We also schedule two last emergency meetings at 10:30 sunday and 1:30 tuesday the same way. I was also responsible forcontacting both the GP survivor and Hell Punch groups to preform progress reports. For the Hell Punch progress report I create a second discord server to contact them. (Inspired by what GP survivor did for our meeting).    
 
 ## User Interface and Input
 
